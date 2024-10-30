@@ -9,8 +9,8 @@ export const APPLY = {
   APPLYPAGE: '/apply',
 };
 
-export const MY_ACCOUNT = {
-  EMPLOYER: '/employer-my-account',
+export const MY_PAGE = {
+  EMPLOYER: '/employer-my-page',
 };
 
 export const EMPLOYEE = {
@@ -32,8 +32,8 @@ const ROUTE_PATH = {
   EMPLOYEE,
   RESUME: '/resume',
   MY_COMPANY: '/my-company/:companyId',
-  VISA_REGISTRATION: '/visa-registration',
-  MY_ACCOUNT,
+  REGISTER_VISA: '/register-visa',
+  MY_PAGE,
   REGISTERSIGN: '/registersign',
   REGISTERCOMPANY: '/register-company',
   CONTRACT,

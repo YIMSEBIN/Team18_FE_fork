@@ -16,40 +16,44 @@ export const innerContainerStyle = css`
   })}
 `;
 
-export const companyWrapperStyle = css`
-  ${responsiveStyle({
-    tablet: {
-      flexDirection: 'column',
-      justifyContent: 'center',
-      alignItems: 'center',
-      gap: '15px',
-      width: '100%',
-    },
-    mobile: {
-      flexDirection: 'column',
-    },
-  })}
-`;
-
-export const imageStyle = css`
-  ${responsiveStyle({
-    default: {
-      width: '280px',
-      height: 'auto',
-    },
-    tablet: {
-      margin: '0 auto',
-      width: '50%',
-    },
-    mobile: {
-      width: '70%',
-    },
-  })}
-`;
-
-export const buttonStyle = css`
+export const flexStyle = css`
   background-color: ${palettes.blue};
-  color: ${palettes.white};
-  border-radius: 4px;
-  white-space: nowrap;
+  padding: 30px;
+  border-radius: 8px;
+
+  ${responsiveStyle({
+    mobile: {
+      flexDirection: 'column',
+      gap: '27px',
+      justifyContent: 'center',
+    },
+  })}
+`;
+
+export const typoStyle = {
+  ...responsiveStyle({
+    default: {
+      color: `${palettes.white}`,
+    },
+    tablet: {
+      fontSize: '33px',
+    },
+    mobile: {
+      fontSize: '30px',
+    },
+  }),
+};
+
+export const signButtonStyle = css`
+  width: 300px;
+  padding: 25px;
+  border-radius: 8px;
+`;
+
+export const spinnerFlexStyle = css`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 `;
