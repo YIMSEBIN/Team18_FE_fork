@@ -27,7 +27,16 @@ export type UserData = {
   profileImage: string;
 };
 
-export type StateProps = '근로계약서 서명하기' | '채용 마감' | '지원서 검토중' | '채용 완료';
+// 백엔드에서 정하는 값에 따라 key 바꾸면 됨
+export const State = {
+  LetsSign: '근로계약서 서명하기',
+  Closed: '채용 마감',
+  Waiting: '지원서 검토중',
+  Completed: '채용 완료',
+} as const;
+
+export type StateProps = keyof typeof State;
+export type TextProps = (typeof State)[StateProps];
 
 export type MyRecruitListProps = {
   id: number;

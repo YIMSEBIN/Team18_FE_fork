@@ -20,7 +20,7 @@ export const EMPLOYEE = {
 export const CONTRACT = {
   EMPLOYER: '/employer-contract',
   EMPLOYEE: '/employee-contract',
-};
+} as const;
 
 const ROUTE_PATH = {
   HOME: '/',
