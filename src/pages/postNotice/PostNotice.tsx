@@ -1,4 +1,4 @@
-import { useFetchPostNotice } from '@/apis/employer/hooks/usePostNotice';
+import { useFetchPostNotice } from '@/apis/postNotice/hooks/usePostNotice';
 import { Button, Flex, Input, Typo } from '@/components/common';
 import Layout from '@/features/layout';
 import ROUTE_PATH from '@/routes/path';

@@ -3,8 +3,9 @@ const BASE_URL = '/api';
 export const APIPath = {
   postNotice: `${BASE_URL}/recruitments`,
   allApplication: `${BASE_URL}/application/all`,
-  signEmployeeContract: `${BASE_URL}/api/contract`,
-  makeEmployerContract: `${BASE_URL}/categories`,
+  signEmployeeContract: `${BASE_URL}/contract/employee`,
+  makeContract: `${BASE_URL}/contract`,
+  getContract: `${BASE_URL}/contract/:applyId`,
   downloadContract: `${BASE_URL}/contract/:applyId/download`,
   registerSign: '/api/sign',
   getMyCompanies: `${BASE_URL}/company`,
@@ -19,6 +20,7 @@ export const APIPath = {
 
 export const getDynamicAPIPath = {
   downloadContract: (applyId: number) => APIPath.downloadContract.replace(':applyId', applyId.toString()),
+  getContract: (applyId: number) => APIPath.getContract.replace(':applyId', applyId.toString()),
   getMyRecruitments: (companyId: number) => APIPath.getMyRecruitments.replace(':companyId', companyId.toString()),
   getMyApplicants: (recruitmentId: number) =>
     APIPath.getMyApplicants.replace(':recruitmentId', recruitmentId.toString()),
