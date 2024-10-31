@@ -26,7 +26,7 @@ export const postNotice = async (req: NoticeRequestData) => {
   return response.data;
 };
 
-export const FetchPostNotice = () =>
+export const useFetchPostNotice = () =>
   useMutation({
     mutationFn: postNotice,
   });

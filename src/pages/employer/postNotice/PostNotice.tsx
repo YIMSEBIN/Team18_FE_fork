@@ -1,11 +1,15 @@
-import { FetchPostNotice } from '@/apis/employer/hooks/usePostNotice';
+import { useFetchPostNotice } from '@/apis/employer/hooks/usePostNotice';
 import { Button, Flex, Input, Typo } from '@/components/common';
 import Layout from '@/features/layout';
+import ROUTE_PATH from '@/routes/path';
 import styled from '@emotion/styled';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function PostNotice() {
-  const mutation = FetchPostNotice();
+  const mutation = useFetchPostNotice();
+  const navigate = useNavigate();
+
   const [inputs, setInputs] = useState({
     salary: '',
     workingDuration: '',
@@ -27,7 +31,15 @@ export default function PostNotice() {
   };
 
   const handlePostNotice = () => {
-    mutation.mutate(inputs);
+    mutation.mutate(inputs, {
+      onSuccess: () => {
+        navigate(ROUTE_PATH.HOME);
+      },
+      onError: () => {
+        // 이부분 에러처리 결정해야함.
+        alert('값이 정상적으로 저장되지 않았습니다.');
+      },
+    });
   };
 
   return (

@@ -22,7 +22,6 @@ export default function EmployeeMyPage() {
               design="outlined"
               onClick={() => {
                 navigate(ROUTE_PATH.RESUME);
-                console.log('?');
               }}
             >
               <Typo bold>이력서 등록</Typo>
