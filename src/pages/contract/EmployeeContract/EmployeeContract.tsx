@@ -1,8 +1,10 @@
 import { useGetMyContract } from '@/apis/contract/hooks/useGetMyContract';
+import { useFetchPostContract } from '@/apis/contract/hooks/usePostContract';
 import { Button, Flex, Typo } from '@/components/common';
 import Layout from '@/features/layout';
+import ROUTE_PATH from '@/routes/path';
 import styled from '@emotion/styled';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 export type ContractResponseData = {
   salary: string;
@@ -15,9 +17,27 @@ export type ContractResponseData = {
 };
 
 export default function EmployeeContract() {
-  const { applyId: applicationId } = useParams();
-  const { data: contract } = useGetMyContract(Number(applicationId));
+  const { applyId } = useParams();
+  const applicationId = Number(applyId);
+  const { data: contract } = useGetMyContract(applicationId);
+  const mutation = useFetchPostContract();
+  const navigate = useNavigate();
   const contractData: ContractResponseData = contract || {};
+
+  const handlePostSignEmployeeContract = () => {
+    mutation.mutate(
+      { applyId: applicationId },
+      {
+        onSuccess: () => {
+          navigate(ROUTE_PATH.HOME);
+        },
+        onError: () => {
+          // 이부분 에러처리 결정해야함.
+          alert('값이 정상적으로 저장되지 않았습니다.');
+        },
+      },
+    );
+  };
 
   return (
     <Layout>
@@ -68,7 +88,7 @@ export default function EmployeeContract() {
                 <Button design="outlined" style={{ marginRight: '16px' }}>
                   서명하기
                 </Button>
-                <Button design="default" style={{}}>
+                <Button design="default" onClick={handlePostSignEmployeeContract} style={{}}>
                   제출하기
                 </Button>
               </ButtonWrapper>

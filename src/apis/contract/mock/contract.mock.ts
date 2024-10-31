@@ -1,6 +1,7 @@
 import { http, HttpResponse } from 'msw';
 import { getPostContractPath } from '../hooks/usePostContract';
 import { getMyContractPath } from '../hooks/useGetMyContract';
+import { getPostSignEmployeeContractPath } from '../hooks/usePostEmployeeSign';
 
 export const contractsMockHandler = [
   http.post(getPostContractPath(), async ({ request }) => {
@@ -9,6 +10,11 @@ export const contractsMockHandler = [
   }),
 
   http.get(getMyContractPath(1), () => HttpResponse.json(CONTRACT_DATA)),
+
+  http.post(getPostSignEmployeeContractPath(), async ({ request }) => {
+    const req = await request.json();
+    return HttpResponse.json(req, { status: 201 });
+  }),
 ];
 
 const CONTRACT_DATA = {
