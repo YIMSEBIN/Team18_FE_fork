@@ -10,117 +10,29 @@ export default function EmployerContract() {
           <LineWrapper>
             <Flex direction="column" justifyContent="space-between" alignItems="center" style={{ width: '100%' }}>
               <Typo element="h1" size="24px" style={{ fontWeight: 'bold', marginBottom: '24px' }}>
-                근로계약서 작성하기
+                근 로 계 약 서
               </Typo>
               <InputWrapper>
-                <Typo element="h3" size="20px" style={{ fontWeight: 'bold', marginBottom: '24px' }}>
-                  사용자
-                </Typo>
                 <InputContainer>
-                  <Input label="업체명" style={{ width: '570px', height: '48px' }}></Input>
+                  <Input label="1. 근무장소" style={{ width: '570px', height: '48px' }}></Input>
                 </InputContainer>
                 <InputContainer>
-                  <Input label="소재지" style={{ width: '570px', height: '48px' }}></Input>
+                  <Input label="2. 업무내용" style={{ width: '570px', height: '48px' }}></Input>
                 </InputContainer>
                 <InputContainer>
-                  <Input label="전화번호" style={{ width: '570px', height: '48px' }}></Input>
+                  <Input label="3. 근로일 및 근로일별 근로시간" style={{ width: '570px', height: '48px' }}></Input>
                 </InputContainer>
                 <InputContainer>
-                  <Input label="성명" style={{ width: '570px', height: '48px' }}></Input>
+                  <Input label="4. 주휴일" style={{ width: '570px', height: '48px' }}></Input>
                 </InputContainer>
                 <InputContainer>
-                  <Input label="사업자등록번호" style={{ width: '570px', height: '48px' }}></Input>
-                </InputContainer>
-              </InputWrapper>
-              <InputWrapper>
-                <Typo element="h3" size="20px" style={{ fontWeight: 'bold', marginBottom: '24px' }}>
-                  근로자
-                </Typo>
-                <InputContainer>
-                  <Input label="성명" style={{ width: '570px', height: '48px' }}></Input>
+                  <Input label="5. 임금" style={{ width: '570px', height: '48px' }}></Input>
                 </InputContainer>
                 <InputContainer>
-                  <Input label="생년월일" style={{ width: '570px', height: '48px' }}></Input>
+                  <Input label="6. 연차유급휴가" style={{ width: '570px', height: '48px' }}></Input>
                 </InputContainer>
                 <InputContainer>
-                  <Input label="본국 주소" style={{ width: '570px', height: '48px' }}></Input>
-                </InputContainer>
-              </InputWrapper>
-              <InputWrapper>
-                <Typo element="h3" size="20px" style={{ fontWeight: 'bold', marginBottom: '24px' }}>
-                  근로계약기간
-                </Typo>
-                <InputContainer>
-                  <Input label="시작일자" style={{ width: '570px', height: '48px' }}></Input>
-                </InputContainer>
-                <InputContainer>
-                  <Input label="종료일자" style={{ width: '570px', height: '48px' }}></Input>
-                </InputContainer>
-                <InputContainer>
-                  <Input label="수습기간" style={{ width: '570px', height: '48px' }}></Input>
-                </InputContainer>
-              </InputWrapper>
-              <InputWrapper>
-                <Typo element="h3" size="20px" style={{ fontWeight: 'bold', marginBottom: '24px' }}>
-                  근로장소
-                </Typo>
-                <InputContainer>
-                  <Input label="근로장소" style={{ width: '570px', height: '48px' }}></Input>
-                </InputContainer>
-              </InputWrapper>
-              <InputWrapper>
-                <Typo element="h3" size="20px" style={{ fontWeight: 'bold', marginBottom: '24px' }}>
-                  업무내용
-                </Typo>
-                <InputContainer>
-                  <Input label="업무내용" style={{ width: '570px', height: '48px' }}></Input>
-                </InputContainer>
-              </InputWrapper>
-              <InputWrapper>
-                <Typo element="h3" size="20px" style={{ fontWeight: 'bold', marginBottom: '24px' }}>
-                  근로시간
-                </Typo>
-                <InputContainer>
-                  <Input label="근로시간" style={{ width: '570px', height: '48px' }}></Input>
-                </InputContainer>
-                <InputContainer>
-                  <Input label="휴게시간" style={{ width: '570px', height: '48px' }}></Input>
-                </InputContainer>
-              </InputWrapper>
-              <InputWrapper>
-                <Typo element="h3" size="20px" style={{ fontWeight: 'bold', marginBottom: '24px' }}>
-                  휴일
-                </Typo>
-                <InputContainer>
-                  <Input label="휴일" style={{ width: '570px', height: '48px' }}></Input>
-                </InputContainer>
-              </InputWrapper>
-              <InputWrapper>
-                <Typo element="h3" size="20px" style={{ fontWeight: 'bold', marginBottom: '24px' }}>
-                  임금
-                </Typo>
-                <InputContainer>
-                  <Input label="월 통상임금" style={{ width: '570px', height: '48px' }}></Input>
-                </InputContainer>
-                <InputContainer>
-                  <Input label="수습기간 중 임금" style={{ width: '570px', height: '48px' }}></Input>
-                </InputContainer>
-                <InputContainer>
-                  <Input label="임금 지급일" style={{ width: '570px', height: '48px' }}></Input>
-                </InputContainer>
-                <InputContainer>
-                  <Input label="지급방법" style={{ width: '570px', height: '48px' }}></Input>
-                </InputContainer>
-              </InputWrapper>
-              <InputWrapper>
-                <Typo element="h3" size="20px" style={{ fontWeight: 'bold', marginBottom: '24px' }}>
-                  숙식제공
-                </Typo>
-                <InputContainer>
-                  <Input label="숙박시설 제공" style={{ width: '570px', height: '48px' }}></Input>
-                </InputContainer>
-                <InputContainer>
-                  <Input label="식사 제공" style={{ width: '570px', height: '48px' }}></Input>
+                  <Input label="7. 취업규칙" style={{ width: '570px', height: '48px' }}></Input>
                 </InputContainer>
               </InputWrapper>
               <Typo element="p" size="16px" style={{ fontWeight: 'bold', marginTop: '24px' }}>
