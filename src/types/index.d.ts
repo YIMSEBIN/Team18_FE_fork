@@ -44,6 +44,7 @@ export type MyRecruitListProps = {
   area: string;
   image: string;
   state: StateProps;
+  applyId: number;
 };
 
 export type RecruitmentItem = {

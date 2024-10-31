@@ -29,7 +29,7 @@ type Props = {
 };
 
 export default function MyRecruitCard({ myRecruit }: Props) {
-  const { image, title, area, state } = myRecruit;
+  const { image, title, area, state, applyId } = myRecruit;
   const buttonStyle = getStateStyle(state);
   const navigate = useNavigate();
 
@@ -65,7 +65,7 @@ export default function MyRecruitCard({ myRecruit }: Props) {
         style={{ width: '200px', padding: '10px 20px' }}
         onClick={() => {
           if (state == 'LetsSign') {
-            navigate(ROUTE_PATH.CONTRACT.EMPLOYEE);
+            navigate(ROUTE_PATH.CONTRACT.EMPLOYEE.replace(':applyId', applyId.toString()));
           }
         }}
       >

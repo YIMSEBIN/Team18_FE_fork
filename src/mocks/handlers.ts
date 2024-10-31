@@ -11,7 +11,7 @@ import { visaMockHandler } from '@/apis/applicants/mocks/visaMockHandler';
 import { postApplyMockHandler } from '@apis/apply/postApply.mock';
 import { recruitmentsDetailMockHandler } from '@apis/recruitmentsDetail/recruitmentsDetailMockHandler';
 import { registerCompanyMockHandler } from '@/apis/registerCompany/registerCompany.mock';
-import { contractsMockHandler } from '@/apis/contract/mock/postContract.mock';
+import { contractsMockHandler } from '@/apis/contract/mock/contract.mock';
 
 export const handlers = [
   ...recruitmentsMockHandler,

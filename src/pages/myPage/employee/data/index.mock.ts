@@ -8,6 +8,7 @@ export const myRecruitList: MyRecruitListProps[] = [
     title: '제목',
     area: '대전광역시 유성구',
     state: 'LetsSign',
+    applyId: 1,
   },
   {
     id: 2,
@@ -16,6 +17,7 @@ export const myRecruitList: MyRecruitListProps[] = [
     title: '제목2',
     area: '대전광역시 유성구',
     state: 'Closed',
+    applyId: 2,
   },
   {
     id: 1,
@@ -24,6 +26,7 @@ export const myRecruitList: MyRecruitListProps[] = [
     title: '제목3',
     area: '대전광역시 유성구',
     state: 'Waiting',
+    applyId: 3,
   },
   {
     id: 1,
@@ -32,5 +35,6 @@ export const myRecruitList: MyRecruitListProps[] = [
     title: '제목4',
     area: '대전광역시 유성구',
     state: 'Completed',
+    applyId: 4,
   },
 ];
