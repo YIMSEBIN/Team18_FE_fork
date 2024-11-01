@@ -14,23 +14,15 @@ import {
   menuIconStyle,
   Nav,
 } from './index.styles';
-import { UserData } from '@/types';
-import { startTransition, useEffect, useState } from 'react';
+import { startTransition } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ROUTE_PATH from '@/routes/path';
+import useUser from '@/hooks/useUser';
 
 export default function Header() {
   const navigate = useNavigate();
   const [menuOpen, toggleMenu] = useToggle();
-  const [user, setUser] = useState<UserData | null>(null);
-
-  useEffect(() => {
-    const userData = localStorage.getItem('user');
-
-    if (userData) {
-      setUser(JSON.parse(userData));
-    }
-  }, []);
+  const { user, setUser } = useUser();
 
   const handleLogoClick = () => {
     startTransition(() => {
