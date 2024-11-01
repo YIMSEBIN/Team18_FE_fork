@@ -4,14 +4,15 @@ import { useNavigate } from 'react-router-dom';
 import ROUTE_PATH from '@/routes/path';
 
 interface ModalButtonsProps {
+  applyId: number;
   onClose: () => void;
 }
 
-export default function ModalButtons({ onClose }: ModalButtonsProps) {
+export default function ModalButtons({ applyId, onClose }: ModalButtonsProps) {
   const navigate = useNavigate();
 
   const handleConfirmClick = () => {
-    navigate(ROUTE_PATH.CONTRACT.EMPLOYER);
+    navigate(ROUTE_PATH.CONTRACT.EMPLOYER.replace(':applyId', applyId.toString()));
   };
 
   return (

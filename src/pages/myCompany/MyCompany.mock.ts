@@ -17,8 +17,9 @@ export const recruitmentList = [
     vietnameseTitle: '',
     companyName: '쿠팡 유성점',
     salary: 100000,
-    area: '대전 유성구',
     workHours: '',
+    area: '대전 유성구',
+    hiring: false,
   },
   {
     recruitmentId: 2,
@@ -27,8 +28,9 @@ export const recruitmentList = [
     vietnameseTitle: '',
     companyName: '쿠팡 유성점',
     salary: 100000,
-    area: '대전 유성구',
     workHours: '',
+    area: '대전 유성구',
+    hiring: false,
   },
   {
     recruitmentId: 3,
@@ -37,7 +39,8 @@ export const recruitmentList = [
     vietnameseTitle: '',
     companyName: '쿠팡 유성점',
     salary: 100000,
-    area: '대전 유성구',
     workHours: '',
+    area: '대전 유성구',
+    hiring: false,
   },
 ];

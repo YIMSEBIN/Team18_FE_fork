@@ -7,9 +7,10 @@ interface ContractModalProps {
   isOpen: boolean;
   onClose: () => void;
   userId: number;
+  applyId: number;
 }
 
-export default function ContractModal({ isOpen, onClose, userId }: ContractModalProps) {
+export default function ContractModal({ isOpen, onClose, userId, applyId }: ContractModalProps) {
   const { data: foreigner } = useGetForeigner(userId);
 
   return (
@@ -19,7 +20,7 @@ export default function ContractModal({ isOpen, onClose, userId }: ContractModal
           textChildren={
             <ModalText foreignerIdNumber={foreigner.foreignerIdNumber} visaGenerateDate={foreigner.visaGenerateDate} />
           }
-          buttonChildren={<ModalButtons onClose={onClose} />}
+          buttonChildren={<ModalButtons applyId={applyId} onClose={onClose} />}
           onClose={onClose}
           style={{ padding: '15px' }}
         />

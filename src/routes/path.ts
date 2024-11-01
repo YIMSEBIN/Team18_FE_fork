@@ -11,7 +11,7 @@ export const APPLY = {
 
 export const MY_PAGE = {
   EMPLOYER: '/employer-my-page',
-};
+} as const;
 
 export const EMPLOYEE = {
   EMPLOYEE_PAGE: '/employee-my-page',
