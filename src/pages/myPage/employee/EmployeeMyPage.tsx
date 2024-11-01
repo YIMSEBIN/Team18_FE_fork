@@ -4,11 +4,13 @@ import styled from '@emotion/styled';
 import MyRecruitList from '../../../features/employee/myPage/MyRecruitList';
 import CardButton from '../../../features/employee/myPage/CardButton';
 import EmployeeProfile from '../../../features/employee/myPage/EmployeeProfile';
-// import { myRecruitList } from './data/index.mock';
 import { useGetMyApplication } from '@/apis/employee/hooks/useGetMyApplication';
+import { useNavigate } from 'react-router-dom';
+import ROUTE_PATH from '@/routes/path';
 
 export default function EmployeeMyPage() {
   const { data: myRecruitList } = useGetMyApplication();
+  const navigate = useNavigate();
 
   return (
     <Layout>
@@ -16,15 +18,30 @@ export default function EmployeeMyPage() {
         <Section>
           <EmployeeProfile />
           <ColumnSection>
-            <CardButton design="outlined">
+            <CardButton
+              design="outlined"
+              onClick={() => {
+                navigate(ROUTE_PATH.RESUME);
+              }}
+            >
               <Typo bold>이력서 등록</Typo>
               <Icon.EmployeePage.Bag />
             </CardButton>
-            <CardButton design="outlined">
+            <CardButton
+              design="outlined"
+              onClick={() => {
+                navigate(ROUTE_PATH.REGISTERSIGN);
+              }}
+            >
               <Typo bold>사인 등록</Typo>
               <Icon.EmployeePage.Pen />
             </CardButton>
-            <CardButton design="outlined">
+            <CardButton
+              design="outlined"
+              onClick={() => {
+                navigate(ROUTE_PATH.REGISTER_VISA);
+              }}
+            >
               <Typo bold>외국인 번호 및 비자 발급 일자 등록</Typo>
               <Icon.EmployeePage.Card />
             </CardButton>

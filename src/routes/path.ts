@@ -18,9 +18,9 @@ export const EMPLOYEE = {
 } as const;
 
 export const CONTRACT = {
-  EMPLOYER: '/employer-contract',
-  EMPLOYEE: '/employee-contract',
-};
+  EMPLOYER: '/employer-contract/:applyId',
+  EMPLOYEE: '/employee-contract/:applyId',
+} as const;
 
 const ROUTE_PATH = {
   HOME: '/',
