@@ -1,15 +1,8 @@
 import Layout from '@/features/layout';
-import { Flex, InnerContainer, Image, Typo, Button, Icon, Spinner } from '@/components/common';
+import { Flex, InnerContainer, Image, Spinner } from '@/components/common';
 import CompanyLogo from '@assets/images/coupang.png';
 import CompanyInfo from '@/features/companies/CompanyInfo/CompanyInfo';
-import { palettes } from '@/assets/styles/global/palettes';
-import {
-  buttonStyle,
-  imageStyle,
-  companyWrapperStyle,
-  innerContainerStyle,
-  spinnerFlexStyle,
-} from './MyCompany.styles';
+import { imageStyle, companyWrapperStyle, innerContainerStyle, spinnerFlexStyle } from './MyCompany.styles';
 import RecruitmentList from '@/features/recruitments/RecruitmentList/RecruitmentList';
 import { useParams } from 'react-router-dom';
 import { useGetMyCompanies } from '@/apis/companies/hooks/useGetMyCompanies';
@@ -39,7 +32,7 @@ export default function MyCompany({ company, recruitmentList }: MyCompanyProps) 
             gap={{ y: '60px' }}
             css={{ position: 'relative', minHeight: '600px' }}
           >
-            <Flex justifyContent="space-between" alignItems="center" gap={{ x: '100px' }} css={companyWrapperStyle}>
+            <Flex alignItems="center" gap={{ x: '150px' }} css={companyWrapperStyle}>
               <Image url={CompanyLogo} size={{ width: '280px', height: '120px' }} css={imageStyle} />
               <CompanyInfo
                 name={companyData.name}
@@ -47,14 +40,6 @@ export default function MyCompany({ company, recruitmentList }: MyCompanyProps) 
                 brand={companyData.brand}
                 revenuePerYear={companyData.revenuePerYear}
               />
-              <Button css={buttonStyle}>
-                <Flex gap={{ x: '15px' }}>
-                  <Typo size="16px" style={{ color: `${palettes.white}` }}>
-                    회사 정보 수정하기
-                  </Typo>
-                  <Icon.Arrow.RightWhite />
-                </Flex>
-              </Button>
             </Flex>
             {isLoading ? (
               <Flex justifyContent="center" alignItems="center" css={spinnerFlexStyle}>

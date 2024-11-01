@@ -4,13 +4,10 @@ import { css } from '@emotion/react';
 export const buttonsCellStyle = css`
   ${responsiveStyle({
     default: {
-      width: '600px',
+      width: '400px',
     },
     tablet: {
       width: '280px',
-    },
-    mobile: {
-      width: '200px',
     },
   })}
 `;

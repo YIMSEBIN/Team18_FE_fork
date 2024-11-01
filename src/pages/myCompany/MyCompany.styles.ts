@@ -1,4 +1,3 @@
-import { palettes } from '@/assets/styles/global/palettes';
 import { responsiveStyle } from '@/utils/responsive';
 import { css } from '@emotion/react';
 
@@ -45,13 +44,6 @@ export const imageStyle = css`
       width: '70%',
     },
   })}
-`;
-
-export const buttonStyle = css`
-  background-color: ${palettes.blue};
-  color: ${palettes.white};
-  border-radius: 4px;
-  white-space: nowrap;
 `;
 
 export const spinnerFlexStyle = css`

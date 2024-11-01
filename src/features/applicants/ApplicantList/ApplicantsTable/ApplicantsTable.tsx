@@ -43,7 +43,6 @@ export default function ApplicantsTable({ applicantList }: Props) {
                 <Td>{applicant.korean}</Td>
                 <Td css={buttonsCellStyle}>
                   <Flex justifyContent="flex-end" alignItems="center" gap={{ x: '20px' }} css={buttonGroupStyle}>
-                    <Button css={buttonStyle}>이력서</Button>
                     <Button css={buttonStyle}>지원서</Button>
                     <Button css={buttonStyle} onClick={() => handleOpenModal(applicant.userId)}>
                       계약하기
