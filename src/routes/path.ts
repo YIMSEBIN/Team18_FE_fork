@@ -7,7 +7,7 @@ export const AUTH = {
 export const APPLY = {
   GUIDE: '/applyguide',
   APPLYPAGE: '/apply',
-};
+}; 
 
 export const MY_PAGE = {
   EMPLOYER: '/employer-my-page',
