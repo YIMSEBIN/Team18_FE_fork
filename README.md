@@ -24,4 +24,3 @@ const Section = styled.div`
   margin-bottom: 52px;
 `;
 ```
-
