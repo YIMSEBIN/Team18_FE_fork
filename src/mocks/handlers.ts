@@ -12,6 +12,7 @@ import { postApplyMockHandler } from '@apis/apply/postApply.mock';
 import { recruitmentsDetailMockHandler } from '@apis/recruitmentsDetail/recruitmentsDetailMockHandler';
 import { registerCompanyMockHandler } from '@/apis/registerCompany/registerCompany.mock';
 import { contractsMockHandler } from '@/apis/contract/mock/contract.mock';
+import { getProfileInfoHandler } from '@/apis/applicants/mocks/getApplicantProfile';
 
 export const handlers = [
   ...recruitmentsMockHandler,
@@ -28,4 +29,5 @@ export const handlers = [
   ...recruitmentsDetailMockHandler,
   ...registerCompanyMockHandler,
   ...contractsMockHandler,
+  ...getProfileInfoHandler,
 ];

@@ -16,6 +16,7 @@ export const APIPath = {
   registerCompany: `${BASE_URL}/company`,
   apply: '/api/application/',
   recruitmentsDetail: '/api/recruitments/:postId',
+  getApplicantProfile: '/api/resumes/:resumeId/:applyId',
 };
 
 export const getDynamicAPIPath = {
@@ -26,4 +27,6 @@ export const getDynamicAPIPath = {
     APIPath.getMyApplicants.replace(':recruitmentId', recruitmentId.toString()),
   getForeigner: (userId: number) => APIPath.getForeigner.replace(':userId', userId.toString()),
   recruitmentsDetail: (postId: string) => APIPath.recruitmentsDetail.replace(':postId', postId.toString()),
+  getApplicantProfile: (resumeId: number, applyId: number) =>
+    APIPath.getApplicantProfile.replace(':resumeId', resumeId.toString()).replace(':applyId', applyId.toString()),
 };
