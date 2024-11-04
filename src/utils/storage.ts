@@ -1,23 +1,29 @@
 import { UserData } from '@/types';
 
-const USER_KEY = 'user';
-const TOKEN_KEY = 'token';
+const STORAGE_KEYS = {
+  USER: 'user',
+  TOKEN: 'token',
+  LANGUAGE: 'language',
+};
 
 export const userLocalStorage = {
   getUser: (): UserData | undefined => {
-    const user = localStorage.getItem(USER_KEY);
+    const user = localStorage.getItem(STORAGE_KEYS.USER);
     return user ? JSON.parse(user) : undefined;
   },
   setUser: (user: UserData) => {
-    localStorage.setItem(USER_KEY, JSON.stringify(user));
+    localStorage.setItem(STORAGE_KEYS.USER, JSON.stringify(user));
   },
   removeUser: () => {
-    localStorage.removeItem(USER_KEY);
+    localStorage.removeItem(STORAGE_KEYS.USER);
   },
-  getToken: (): string | null => {
-    return localStorage.getItem(TOKEN_KEY);
-  },
+
   removeToken: () => {
-    localStorage.removeItem(TOKEN_KEY);
+    localStorage.removeItem(STORAGE_KEYS.TOKEN);
+  },
+
+  getLanguage: (): string | null => {
+    const language = localStorage.getItem(STORAGE_KEYS.LANGUAGE);
+    return language ? JSON.parse(language).state.selectedOption.value : null;
   },
 };

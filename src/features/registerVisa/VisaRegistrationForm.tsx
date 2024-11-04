@@ -78,7 +78,6 @@ export default function VisaRegistrationForm() {
         <Modal
           textChildren="등록이 완료되었습니다."
           buttonChildren={<Button onClick={closeModal}>확인</Button>}
-          /* onClose 부분 추후 수정 예정 */
           onClose={closeModal}
         />
       )}

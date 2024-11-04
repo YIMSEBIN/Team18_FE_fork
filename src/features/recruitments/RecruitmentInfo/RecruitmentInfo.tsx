@@ -12,10 +12,15 @@ import {
   infoGroupStyle,
   recruitmentFlexStyle,
 } from './RecruitmentInfo.styles';
+import { useLanguage } from '@/components/providers/Language.provider';
 
-type Props = Pick<RecruitmentItem, 'image' | 'companyName' | 'koreanTitle' | 'area' | 'salary'>;
+type Props = Omit<RecruitmentItem, 'recruitmentId' | 'workHours' | 'hiring'>;
 
-export default function RecruitmentInfo({ image, companyName, koreanTitle, area, salary }: Props) {
+export default function RecruitmentInfo({ image, companyName, koreanTitle, vietnameseTitle, area, salary }: Props) {
+  const { language } = useLanguage();
+
+  const title = language === 'korean' ? koreanTitle : vietnameseTitle;
+
   return (
     <Flex justifyContent="space-between" alignItems="center" gap={{ y: '100px' }} css={recruitmentFlexStyle}>
       <ImageWrapper>
@@ -24,7 +29,7 @@ export default function RecruitmentInfo({ image, companyName, koreanTitle, area,
       <Flex css={infoFlexStyle}>
         <Typo color="blue">{companyName}</Typo>
         <Typo element="h3" size="20px">
-          {koreanTitle}
+          {title}
         </Typo>
         <Flex css={infoGroupStyle}>
           <Flex alignItems="center" gap={{ x: '12px' }}>

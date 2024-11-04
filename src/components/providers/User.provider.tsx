@@ -4,10 +4,10 @@ import { createContext, useContext, useEffect, useState } from 'react';
 import { UserData } from '@/types';
 import { userLocalStorage } from '@/utils/storage';
 
-interface UserContextType {
+type UserContextType = {
   user: UserData | undefined;
   setUser: React.Dispatch<React.SetStateAction<UserData | undefined>>;
-}
+};
 
 export const UserContext = createContext<UserContextType | undefined>(undefined);
 
@@ -15,16 +15,14 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<UserData | undefined>(() => userLocalStorage.getUser());
 
   useEffect(() => {
-    const changeStorage = () => {
+    const changeUser = () => {
       const updatedUser = userLocalStorage.getUser();
       setUser(updatedUser);
     };
 
-    window.addEventListener('storage', changeStorage);
+    window.addEventListener('storage', changeUser);
 
-    return () => {
-      window.removeEventListener('storage', changeStorage);
-    };
+    return () => window.removeEventListener('storage', changeUser);
   }, []);
 
   return <UserContext.Provider value={{ user, setUser }}>{children}</UserContext.Provider>;

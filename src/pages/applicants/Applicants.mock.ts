@@ -4,7 +4,7 @@ export const recruitment = {
   recruitmentId: 1,
   image: CompanyImage,
   koreanTitle: '쿠팡 유성점에서 아르바이트 모집합니다.',
-  vietnameseTitle: '',
+  vietnameseTitle: 'Coupang đang tuyển dụng làm việc bán thời gian tại chi nhánh Yuseong.',
   companyName: '쿠팡 유성점',
   salary: 50000000,
   workHours: '',

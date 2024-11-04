@@ -14,7 +14,7 @@ export default function ApplicantList({ applicantList }: Props) {
           지원자 목록
         </Typo>
         <Typo element="span" size="16px">
-          총 {applicantList.length}건
+          총 {applicantList.length}명
         </Typo>
       </Flex>
       <ApplicantsTable applicantList={applicantList} />

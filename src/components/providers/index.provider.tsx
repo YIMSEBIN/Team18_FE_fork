@@ -5,16 +5,19 @@ import Modals from '../common/Modal/Modals';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from '@/apis/instance';
 import { UserProvider } from './User.provider';
+import { LanguageProvider } from './Language.provider';
 
 export default function AppProviders({ children }: { children: ReactNode }) {
   return (
     <GlobalStylesProvider>
       <QueryClientProvider client={queryClient}>
         <ModalsProvider>
-          <UserProvider>
-            {children}
-            <Modals />
-          </UserProvider>
+          <LanguageProvider>
+            <UserProvider>
+              {children}
+              <Modals />
+            </UserProvider>
+          </LanguageProvider>
         </ModalsProvider>
       </QueryClientProvider>
     </GlobalStylesProvider>

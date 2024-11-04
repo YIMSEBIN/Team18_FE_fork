@@ -5,6 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import ROUTE_PATH from '@/routes/path';
 import { useCloseRecruitment } from '@/apis/recruitments/hooks/useCloseRecruitment';
 import { useState } from 'react';
+import { useLanguage } from '@/components/providers/Language.provider';
 
 type Props = {
   recruitmentList: RecruitmentItem[];
@@ -15,6 +16,7 @@ export default function RecruitmentsTable({ recruitmentList }: Props) {
   const { companyId } = useParams();
   const mutation = useCloseRecruitment();
   const [closedRecruitment, setClosedRecruitment] = useState<{ [key: number]: boolean }>({});
+  const { language } = useLanguage();
 
   const handleApplicantClick = (companyId: string, recruitmentId: number) => {
     navigate(
@@ -29,10 +31,6 @@ export default function RecruitmentsTable({ recruitmentList }: Props) {
           ...prev,
           [recruitmentId]: true,
         }));
-      },
-      onError: () => {
-        // TODO: 에러 처리 결정
-        alert('마감 실패');
       },
     });
   };
@@ -58,7 +56,7 @@ export default function RecruitmentsTable({ recruitmentList }: Props) {
                       {recruitment.companyName}
                     </Typo>
                     <Typo element="p" size="16px">
-                      {recruitment.koreanTitle}
+                      {language === 'vietnamese' ? recruitment.vietnameseTitle : recruitment.koreanTitle}
                     </Typo>
                   </Flex>
                   <Flex css={buttonGroupStyle}>

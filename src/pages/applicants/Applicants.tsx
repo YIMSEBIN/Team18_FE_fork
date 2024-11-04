@@ -32,6 +32,7 @@ export default function Applicants({ recruitment, applicantList }: MyApplicantPr
               image={recruitmentData.image}
               companyName={recruitmentData.companyName}
               koreanTitle={recruitmentData.koreanTitle}
+              vietnameseTitle={recruitmentData.vietnameseTitle}
               area={recruitmentData.area}
               salary={recruitmentData.salary}
             />
