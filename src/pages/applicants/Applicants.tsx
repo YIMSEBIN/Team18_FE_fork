@@ -29,6 +29,7 @@ export default function Applicants({ recruitment, applicantList }: MyApplicantPr
         <InnerContainer>
           <Flex direction="column" gap={{ y: '60px' }} css={{ position: 'relative', minHeight: '600px' }}>
             <RecruitmentsInfo
+              recruitmentId={recruitmentData.recruitmentId}
               image={recruitmentData.image}
               companyName={recruitmentData.companyName}
               koreanTitle={recruitmentData.koreanTitle}

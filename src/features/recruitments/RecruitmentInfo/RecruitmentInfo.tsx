@@ -13,13 +13,28 @@ import {
   recruitmentFlexStyle,
 } from './RecruitmentInfo.styles';
 import { useLanguage } from '@/components/providers/Language.provider';
+import { useNavigate } from 'react-router-dom';
+import ROUTE_PATH from '@/routes/path';
 
-type Props = Omit<RecruitmentItem, 'recruitmentId' | 'workHours' | 'hiring'>;
+type Props = Omit<RecruitmentItem, 'workHours' | 'hiring'>;
 
-export default function RecruitmentInfo({ image, companyName, koreanTitle, vietnameseTitle, area, salary }: Props) {
+export default function RecruitmentInfo({
+  recruitmentId,
+  image,
+  companyName,
+  koreanTitle,
+  vietnameseTitle,
+  area,
+  salary,
+}: Props) {
   const { language } = useLanguage();
-
+  const navigate = useNavigate();
   const title = language === 'korean' ? koreanTitle : vietnameseTitle;
+
+  const goToRecruitmentDetails = (recruitmentId: number) => {
+    console.log('recruitmentId: ', recruitmentId);
+    navigate(ROUTE_PATH.RECRUIT.replace(':recruitmentId', recruitmentId.toString()));
+  };
 
   return (
     <Flex justifyContent="space-between" alignItems="center" gap={{ y: '100px' }} css={recruitmentFlexStyle}>
@@ -42,7 +57,7 @@ export default function RecruitmentInfo({ image, companyName, koreanTitle, vietn
           </Flex>
         </Flex>
       </Flex>
-      <Button css={buttonStyle}>
+      <Button css={buttonStyle} onClick={() => goToRecruitmentDetails(recruitmentId)}>
         <Flex gap={{ x: '15px' }}>
           <Typo size="16px" color="white" style={buttonTextStyle}>
             자세히 보러가기
