@@ -17,7 +17,8 @@ import {
 import { startTransition } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ROUTE_PATH from '@/routes/path';
-import useUser from '@/hooks/useUser';
+import { useUser } from '@/components/providers/User.provider';
+import { userLocalStorage } from '@/utils/storage';
 
 export default function Header() {
   const navigate = useNavigate();
@@ -35,9 +36,9 @@ export default function Header() {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    setUser(null);
+    userLocalStorage.removeToken();
+    userLocalStorage.removeUser();
+    setUser(undefined);
     navigate(ROUTE_PATH.HOME);
   };
 
