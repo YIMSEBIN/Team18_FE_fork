@@ -23,4 +23,4 @@ const Section = styled.div`
   align-items: center;
   margin-bottom: 52px;
 `;
-```
+
