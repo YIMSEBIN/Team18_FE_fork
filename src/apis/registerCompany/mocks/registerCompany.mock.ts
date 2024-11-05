@@ -1,5 +1,5 @@
 import { http, HttpResponse } from 'msw';
-import { getPostCompanyPath } from './useRegisterCompany';
+import { getPostCompanyPath } from '../hooks/useRegisterCompany';
 
 export const registerCompanyMockHandler = [
   http.post(getPostCompanyPath(), async ({ request }) => {
