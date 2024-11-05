@@ -1,5 +1,5 @@
 import Layout from '@/features/layout';
-import { Flex, InnerContainer, Image, Spinner } from '@/components/common';
+import { Flex, InnerContainer, Image, Spinner, Typo } from '@/components/common';
 import CompanyLogo from '@assets/images/coupang.png';
 import CompanyInfo from '@/pages/myPage/employer/Companies/CompanyInfo';
 import { imageStyle, companyWrapperStyle, innerContainerStyle, spinnerFlexStyle } from './MyCompany.styles';
@@ -16,8 +16,8 @@ interface MyCompanyProps {
 
 export default function MyCompany({ company, recruitmentList }: MyCompanyProps) {
   const { companyId } = useParams();
-  const { data: companyList } = useGetMyCompanies();
-  const { data: recruitments, isLoading } = useGetMyRecruitments(Number(companyId));
+  const { data: companyList, isLoading: isLoadingCompanies } = useGetMyCompanies();
+  const { data: recruitments, isLoading: isLoadingRecruitments } = useGetMyRecruitments(Number(companyId));
 
   const companyData = company || companyList?.find((c: CompanyData) => c.companyId.toString() === companyId);
   const recruitmentsData = recruitmentList || recruitments;
@@ -32,16 +32,24 @@ export default function MyCompany({ company, recruitmentList }: MyCompanyProps) 
             gap={{ y: '60px' }}
             css={{ position: 'relative', minHeight: '600px' }}
           >
-            <Flex alignItems="center" gap={{ x: '150px' }} css={companyWrapperStyle}>
-              <Image url={CompanyLogo} size={{ width: '280px', height: '120px' }} css={imageStyle} />
-              <CompanyInfo
-                name={companyData.name}
-                industryOccupation={companyData.industryOccupation}
-                brand={companyData.brand}
-                revenuePerYear={companyData.revenuePerYear}
-              />
-            </Flex>
-            {isLoading ? (
+            {isLoadingCompanies ? (
+              <Flex justifyContent="center" alignItems="center" css={{ minHeight: '160px' }}>
+                <Typo size="18px">회사 정보를 불러오는 중입니다...</Typo>
+              </Flex>
+            ) : (
+              <Flex alignItems="center" gap={{ x: '150px' }} css={companyWrapperStyle}>
+                <Image url={CompanyLogo} size={{ width: '280px', height: '120px' }} css={imageStyle} />
+                {companyData && (
+                  <CompanyInfo
+                    name={companyData.name}
+                    industryOccupation={companyData.industryOccupation}
+                    brand={companyData.brand}
+                    revenuePerYear={companyData.revenuePerYear}
+                  />
+                )}
+              </Flex>
+            )}
+            {isLoadingRecruitments ? (
               <Flex justifyContent="center" alignItems="center" css={spinnerFlexStyle}>
                 <Spinner />
               </Flex>

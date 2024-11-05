@@ -1,4 +1,4 @@
-import { Flex, InnerContainer, Spinner } from '@/components/common';
+import { Flex, InnerContainer, Spinner, Typo } from '@/components/common';
 import ApplicantList from '@/pages/applicants/ApplicantList';
 import RecruitmentsInfo from '@/pages/myCompany/Recruitments/RecruitmentInfo';
 import Layout from '@/features/layout';
@@ -16,8 +16,8 @@ interface MyApplicantProps {
 
 export default function Applicants({ recruitment, applicantList }: MyApplicantProps) {
   const { companyId, recruitmentId } = useParams();
-  const { data: recruitmentList } = useGetMyRecruitments(Number(companyId));
-  const { data: applicants, isLoading } = useGetMyApplicants(Number(recruitmentId));
+  const { data: recruitmentList, isLoading: isLoadingRecruitment } = useGetMyRecruitments(Number(companyId));
+  const { data: applicants, isLoading: isLoadingApplicants } = useGetMyApplicants(Number(recruitmentId));
 
   const recruitmentData =
     recruitment || recruitmentList?.find((r: RecruitmentItem) => r.recruitmentId.toString() === recruitmentId);
@@ -28,16 +28,24 @@ export default function Applicants({ recruitment, applicantList }: MyApplicantPr
       <MainContainer>
         <InnerContainer>
           <Flex direction="column" gap={{ y: '60px' }} css={{ position: 'relative', minHeight: '600px' }}>
-            <RecruitmentsInfo
-              recruitmentId={recruitmentData.recruitmentId}
-              image={recruitmentData.image}
-              companyName={recruitmentData.companyName}
-              koreanTitle={recruitmentData.koreanTitle}
-              vietnameseTitle={recruitmentData.vietnameseTitle}
-              area={recruitmentData.area}
-              salary={recruitmentData.salary}
-            />
-            {isLoading ? (
+            {isLoadingRecruitment ? (
+              <Flex justifyContent="center" alignItems="center" css={{ minHeight: '160px' }}>
+                <Typo size="18px">공고글 정보를 불러오는 중입니다...</Typo>
+              </Flex>
+            ) : (
+              recruitmentData && (
+                <RecruitmentsInfo
+                  recruitmentId={recruitmentData.recruitmentId}
+                  image={recruitmentData.image}
+                  companyName={recruitmentData.companyName}
+                  koreanTitle={recruitmentData.koreanTitle}
+                  vietnameseTitle={recruitmentData.vietnameseTitle}
+                  area={recruitmentData.area}
+                  salary={recruitmentData.salary}
+                />
+              )
+            )}
+            {isLoadingApplicants ? (
               <Flex justifyContent="center" alignItems="center" css={spinnerFlexStyle}>
                 <Spinner />
               </Flex>

@@ -10,7 +10,7 @@ export default function EmployerMyPage() {
   const { data: companyList, isLoading } = useGetMyCompanies();
   const navigate = useNavigate();
 
-  const handleSignButtonClick = () => {
+  const goToSignPage = () => {
     navigate(ROUTE_PATH.REGISTERSIGN);
   };
 
@@ -23,7 +23,7 @@ export default function EmployerMyPage() {
               <Typo element="h2" size="36px" style={typoStyle} bold>
                 사장님, 안녕하세요!
               </Typo>
-              <Button design="outlined" css={signButtonStyle} onClick={handleSignButtonClick}>
+              <Button design="outlined" css={signButtonStyle} onClick={goToSignPage}>
                 <Flex justifyContent="space-between">
                   <Typo size="20px" bold>
                     사인 등록
