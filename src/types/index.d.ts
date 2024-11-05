@@ -56,4 +56,5 @@ export type RecruitmentItem = {
   salary: number;
   workHours: string;
   area: string;
+  hiring?: boolean;
 };

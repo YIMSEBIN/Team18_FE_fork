@@ -1,13 +1,8 @@
 import { Button, Flex, Input, Modal } from '@/components/common';
 import { ChangeEvent, useMemo, useState } from 'react';
-<<<<<<<< HEAD:src/features/registerVisa/VisaRegistrationForm.tsx
+import { useRegisterVisaInfo } from '@/apis/applicants/hooks/useRegisterVisaInfo';
 import { buttonStyle, ErrorMessage, Form, inputStyle } from './VisaRegistrationForm.styles';
 import { validateForeignerNumber } from './validateForeignerNumber';
-import { useRegisterVisaInfo } from '@/apis/applicants/hooks/useRegisterVisaInfo';
-========
-import { buttonStyle, ErrorMessage, Form, inputStyle } from './index.styles';
-import { validateForeignerNumber } from './validateForeignerNumber';
->>>>>>>> Develop:src/features/visaRegistration/index.tsx
 
 export default function VisaRegistrationForm() {
   const [foreignerIdNumber, setForeignerNumber] = useState('');
@@ -15,11 +10,8 @@ export default function VisaRegistrationForm() {
   const [error, setError] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const formValid = useMemo(() => !error, [error]);
-<<<<<<<< HEAD:src/features/registerVisa/VisaRegistrationForm.tsx
 
   const registerVisaMutation = useRegisterVisaInfo();
-========
->>>>>>>> Develop:src/features/visaRegistration/index.tsx
 
   const handleForeignerNumberChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
@@ -86,7 +78,6 @@ export default function VisaRegistrationForm() {
         <Modal
           textChildren="등록이 완료되었습니다."
           buttonChildren={<Button onClick={closeModal}>확인</Button>}
-          /* onClose 부분 추후 수정 예정 */
           onClose={closeModal}
         />
       )}
