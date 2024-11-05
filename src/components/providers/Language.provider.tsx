@@ -2,26 +2,35 @@ import { userLocalStorage } from '@/utils/storage';
 import { createContext, ReactNode, useContext, useEffect, useState } from 'react';
 
 type LanguageContextType = {
-  language: string | null;
-  setLanguage: (language: string | null) => void;
+  language: string;
+  setLanguage: (language: string) => void;
 };
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  const [language, setLanguage] = useState<string | null>(() => userLocalStorage.getLanguage());
+  const [language, setLanguage] = useState<string>(() => userLocalStorage.getLanguage() || 'korean');
 
   useEffect(() => {
-    const changeLanguage = () => {
-      const updatedLanguage = userLocalStorage.getLanguage();
-      setLanguage(updatedLanguage);
+    const handleStorageChange = (event: StorageEvent) => {
+      if (event.key === 'language') {
+        const newLanguage = event.newValue ? JSON.parse(event.newValue) : 'korean';
+        setLanguage(newLanguage);
+      }
     };
 
-    window.addEventListener('storage', changeLanguage);
-    return () => window.removeEventListener('storage', changeLanguage);
+    window.addEventListener('storage', handleStorageChange);
+    return () => window.removeEventListener('storage', handleStorageChange);
   }, []);
 
-  return <LanguageContext.Provider value={{ language, setLanguage }}>{children}</LanguageContext.Provider>;
+  const updateLanguage = (newLanguage: string) => {
+    userLocalStorage.setLanguage(newLanguage);
+    setLanguage(newLanguage);
+  };
+
+  return (
+    <LanguageContext.Provider value={{ language, setLanguage: updateLanguage }}>{children}</LanguageContext.Provider>
+  );
 };
 
 export const useLanguage = () => {

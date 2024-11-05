@@ -11,14 +11,14 @@ export default function AppProviders({ children }: { children: ReactNode }) {
   return (
     <GlobalStylesProvider>
       <QueryClientProvider client={queryClient}>
-        <ModalsProvider>
-          <LanguageProvider>
+        <LanguageProvider>
+          <ModalsProvider>
             <UserProvider>
               {children}
               <Modals />
             </UserProvider>
-          </LanguageProvider>
-        </ModalsProvider>
+          </ModalsProvider>
+        </LanguageProvider>
       </QueryClientProvider>
     </GlobalStylesProvider>
   );

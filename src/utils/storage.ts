@@ -26,4 +26,8 @@ export const userLocalStorage = {
     const language = localStorage.getItem(STORAGE_KEYS.LANGUAGE);
     return language ? JSON.parse(language).state.selectedOption.value : null;
   },
+  setLanguage: (language: string) => {
+    const languageObj = JSON.stringify({ state: { selectedOption: { value: language } } });
+    localStorage.setItem(STORAGE_KEYS.LANGUAGE, languageObj);
+  },
 };
