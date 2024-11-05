@@ -1,7 +1,7 @@
 import { Modal } from '@/components/common';
-import ModalText from './ModalText/ModalText';
+import ModalText from './ModalText';
 import { useGetForeigner } from '@/apis/applicants/hooks/useGetForeigner';
-import ModalButtons from './ModalButtons/ModalButtons';
+import ModalButtons from './ModalButtons';
 
 interface ContractModalProps {
   isOpen: boolean;
