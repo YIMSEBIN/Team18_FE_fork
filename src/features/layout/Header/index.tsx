@@ -25,28 +25,28 @@ export default function Header() {
   const [menuOpen, toggleMenu] = useToggle();
   const { user, setUser } = useUser();
 
-  const handleLogoClick = () => {
+  const goToHome = () => {
     startTransition(() => {
       navigate(ROUTE_PATH.HOME);
     });
   };
 
-  const handleLogin = () => {
+  const login = () => {
     navigate(ROUTE_PATH.AUTH.SIGN_IN);
   };
 
-  const handleLogout = () => {
+  const logout = () => {
     userLocalStorage.removeToken();
     userLocalStorage.removeUser();
     setUser(undefined);
     navigate(ROUTE_PATH.HOME);
   };
 
-  const handlePostNotice = () => {
+  const goToPostNotice = () => {
     navigate(ROUTE_PATH.POST_NOTICE);
   };
 
-  const handleProfileClick = () => {
+  const goToMyPage = () => {
     if (user?.type === 'employer') {
       navigate(ROUTE_PATH.MY_PAGE.EMPLOYER);
     } else if (user?.type === 'employee') {
@@ -57,27 +57,27 @@ export default function Header() {
   return (
     <HeaderContainer>
       <Flex justifyContent="space-between" alignItems="center" css={flexStyle}>
-        <LogoImg onClick={handleLogoClick} />
+        <LogoImg onClick={goToHome} />
         <Flex justifyContent="flex-end" css={menuIconStyle} onClick={toggleMenu}>
           {menuOpen ? <CloseIcon /> : <MenuIcon />}
         </Flex>
         <Nav open={menuOpen}>
           <LanguageFilter />
           {!user ? (
-            <Button style={customButtonStyle} onClick={handleLogin}>
+            <Button style={customButtonStyle} onClick={login}>
               로그인
             </Button>
           ) : (
             <>
               {user.type === 'employer' && (
-                <Button design="outlined" style={commonButtonStyle} onClick={handlePostNotice}>
+                <Button design="outlined" style={commonButtonStyle} onClick={goToPostNotice}>
                   채용공고 등록
                 </Button>
               )}
-              <Flex justifyContent="center" alignItems="center" onClick={handleProfileClick}>
+              <Flex justifyContent="center" alignItems="center" onClick={goToMyPage}>
                 <Image url={user.profileImage} size={{ width: '40px', height: '40px' }} css={imageStyle} />
               </Flex>
-              <Button style={customButtonStyle} onClick={handleLogout}>
+              <Button style={customButtonStyle} onClick={logout}>
                 로그아웃
               </Button>
             </>

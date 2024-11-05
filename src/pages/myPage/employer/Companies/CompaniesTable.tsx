@@ -12,7 +12,7 @@ type Props = {
 export default function CompaniesTable({ companyList }: Props) {
   const navigate = useNavigate();
 
-  const handleCompanyClick = (companyId: number) => {
+  const goToMyCompany = (companyId: number) => {
     navigate(ROUTE_PATH.MY_COMPANY.replace(':companyId', companyId.toString()));
   };
 
@@ -38,7 +38,7 @@ export default function CompaniesTable({ companyList }: Props) {
                       brand={company.brand}
                       revenuePerYear={company.revenuePerYear}
                     />
-                    <Button design="textbutton" onClick={() => handleCompanyClick(company.companyId)}>
+                    <Button design="textbutton" onClick={() => goToMyCompany(company.companyId)}>
                       <Icon.Arrow.BigRightBlue />
                     </Button>
                   </Flex>
