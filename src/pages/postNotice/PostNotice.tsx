@@ -1,4 +1,4 @@
-import { useFetchPostNotice } from '@/apis/postNotice/hooks/usePostNotice';
+import { usePostNotice } from '@/apis/postNotice/hooks/usePostNotice';
 import { Button, Flex, Input, Typo } from '@/components/common';
 import Layout from '@/features/layout';
 import ROUTE_PATH from '@/routes/path';
@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function PostNotice() {
-  const mutation = useFetchPostNotice();
+  const mutation = usePostNotice();
   const navigate = useNavigate();
 
   const [inputs, setInputs] = useState({
