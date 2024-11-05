@@ -1,6 +1,6 @@
 import { Button, Flex, Icon, List, Image, Table, Th, Td } from '@/components/common';
 import { CompanyData } from '@/types';
-import CompanyInfo from '@/features/companies/CompanyInfo/CompanyInfo';
+import CompanyInfo from '@/pages/myPage/employer/Companies/CompanyInfo';
 import { cellStyle, imageSize, imageStyle } from './CompaniesTable.styles';
 import { useNavigate } from 'react-router-dom';
 import ROUTE_PATH from '@/routes/path';

@@ -1,6 +1,6 @@
 import { Flex, InnerContainer, Spinner } from '@/components/common';
-import ApplicantList from '@/features/applicants/ApplicantList/ApplicantList';
-import RecruitmentsInfo from '@/features/recruitments/RecruitmentInfo/RecruitmentInfo';
+import ApplicantList from '@/pages/applicants/ApplicantList';
+import RecruitmentsInfo from '@/pages/myCompany/Recruitments/RecruitmentInfo';
 import Layout from '@/features/layout';
 import styled from '@emotion/styled';
 import { useGetMyRecruitments } from '@/apis/recruitments/hooks/useGetMyRecruitments';

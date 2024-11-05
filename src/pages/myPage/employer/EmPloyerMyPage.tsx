@@ -1,6 +1,6 @@
 import { Button, Flex, Icon, InnerContainer, Spinner, Typo } from '@/components/common';
 import Layout from '@/features/layout';
-import CompanyList from '@/features/companies/CompanyList/CompanyList';
+import CompanyList from '@/pages/myPage/employer/Companies/CompanyList';
 import { flexStyle, innerContainerStyle, signButtonStyle, spinnerFlexStyle, typoStyle } from './EmployerMyPage.styles';
 import { useGetMyCompanies } from '@/apis/companies/hooks/useGetMyCompanies';
 import { useNavigate } from 'react-router-dom';

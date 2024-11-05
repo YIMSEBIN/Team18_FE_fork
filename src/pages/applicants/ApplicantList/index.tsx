@@ -1,5 +1,5 @@
 import { Flex, Typo } from '@/components/common';
-import ApplicantsTable from './ApplicantsTable/ApplicantsTable';
+import ApplicantsTable from './ApplicantsTable';
 import { ApplicantData } from '@/types';
 
 type Props = {

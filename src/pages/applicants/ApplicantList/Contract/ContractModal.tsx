@@ -5,12 +5,12 @@ import ModalButtons from './ModalButtons';
 
 interface ContractModalProps {
   isOpen: boolean;
-  onClose: () => void;
+  close: () => void;
   userId: number;
   applyId: number;
 }
 
-export default function ContractModal({ isOpen, onClose, userId, applyId }: ContractModalProps) {
+export default function ContractModal({ isOpen, close, userId, applyId }: ContractModalProps) {
   const { data: foreigner } = useGetForeigner(userId);
 
   return (
@@ -20,8 +20,8 @@ export default function ContractModal({ isOpen, onClose, userId, applyId }: Cont
           textChildren={
             <ModalText foreignerIdNumber={foreigner.foreignerIdNumber} visaGenerateDate={foreigner.visaGenerateDate} />
           }
-          buttonChildren={<ModalButtons applyId={applyId} onClose={onClose} />}
-          onClose={onClose}
+          buttonChildren={<ModalButtons applyId={applyId} onClose={close} />}
+          onClose={close}
           style={{ padding: '15px' }}
         />
       )}

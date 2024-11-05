@@ -1,6 +1,6 @@
 import { Button, Flex, List, Table, Td, Th } from '@/components/common';
 import { useState } from 'react';
-import ContractModal from '../ContractModal/ContractModal';
+import ContractModal from './Contract/ContractModal';
 import { ApplicantData } from '@/types';
 import { buttonGroupStyle, buttonsCellStyle, buttonStyle } from './ApplicantsTable.styles';
 
@@ -13,13 +13,13 @@ export default function ApplicantsTable({ applicantList }: Props) {
   const [selectedUserId, setSelectedUserId] = useState<number | null>(null);
   const [selectedApplyId, setSelectedApplyId] = useState<number | null>(null);
 
-  const handleOpenModal = (userId: number, applyId: number) => {
+  const openModal = (userId: number, applyId: number) => {
     setSelectedUserId(userId);
     setSelectedApplyId(applyId);
     setIsModalOpen(true);
   };
 
-  const handleCloseModal = () => {
+  const closeModal = () => {
     setIsModalOpen(false);
     setSelectedUserId(null);
     setSelectedApplyId(null);
@@ -47,7 +47,7 @@ export default function ApplicantsTable({ applicantList }: Props) {
                 <Td css={buttonsCellStyle}>
                   <Flex justifyContent="flex-end" alignItems="center" gap={{ x: '20px' }} css={buttonGroupStyle}>
                     <Button css={buttonStyle}>지원서</Button>
-                    <Button css={buttonStyle} onClick={() => handleOpenModal(applicant.userId, applicant.applyId)}>
+                    <Button css={buttonStyle} onClick={() => openModal(applicant.userId, applicant.applyId)}>
                       계약하기
                     </Button>
                   </Flex>
@@ -58,12 +58,7 @@ export default function ApplicantsTable({ applicantList }: Props) {
         </tbody>
       </Table>
       {selectedUserId && selectedApplyId && (
-        <ContractModal
-          isOpen={isModalOpen}
-          onClose={handleCloseModal}
-          userId={selectedUserId}
-          applyId={selectedApplyId}
-        />
+        <ContractModal isOpen={isModalOpen} close={closeModal} userId={selectedUserId} applyId={selectedApplyId} />
       )}
     </>
   );

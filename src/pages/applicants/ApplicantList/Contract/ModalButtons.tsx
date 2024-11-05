@@ -11,14 +11,14 @@ interface ModalButtonsProps {
 export default function ModalButtons({ applyId, onClose }: ModalButtonsProps) {
   const navigate = useNavigate();
 
-  const handleConfirmClick = () => {
+  const goToEmployer = () => {
     navigate(ROUTE_PATH.CONTRACT.EMPLOYER.replace(':applyId', applyId.toString()));
   };
 
   return (
     <Flex justifyContent="space-between">
       <Button onClick={onClose}>취소</Button>
-      <Button onClick={handleConfirmClick} css={customButtonStyle}>
+      <Button onClick={goToEmployer} css={customButtonStyle}>
         <Flex gap={{ x: '15px' }}>
           <Typo size="16px" style={buttonTextStyle}>
             확인하였습니다.

@@ -1,9 +1,9 @@
 import Layout from '@/features/layout';
 import { Flex, InnerContainer, Image, Spinner } from '@/components/common';
 import CompanyLogo from '@assets/images/coupang.png';
-import CompanyInfo from '@/features/companies/CompanyInfo/CompanyInfo';
+import CompanyInfo from '@/pages/myPage/employer/Companies/CompanyInfo';
 import { imageStyle, companyWrapperStyle, innerContainerStyle, spinnerFlexStyle } from './MyCompany.styles';
-import RecruitmentList from '@/features/recruitments/RecruitmentList/RecruitmentList';
+import RecruitmentList from '@/pages/myCompany/Recruitments/RecruitmentList';
 import { useParams } from 'react-router-dom';
 import { useGetMyCompanies } from '@/apis/companies/hooks/useGetMyCompanies';
 import { CompanyData, RecruitmentItem } from '@/types';

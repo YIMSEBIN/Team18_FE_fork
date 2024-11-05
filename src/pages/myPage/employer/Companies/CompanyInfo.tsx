@@ -5,7 +5,7 @@ import BrandIcon from '@assets/icons/companyInfo/brand.svg?react';
 import RevenueIcon from '@assets/icons/companyInfo/revenue.svg?react';
 import { companyNameStyle, infoStyle, infoWrapperStyle } from './CompanyInfo.styles';
 
-type Props = Pick<CompanyData, 'name' | 'industryOccupation' | 'brand' | 'revenuePerYear'>;
+type Props = Omit<CompanyData, 'companyId' | 'logoImage'>;
 
 export default function CompanyInfo({ name, industryOccupation, brand, revenuePerYear }: Props) {
   return (
