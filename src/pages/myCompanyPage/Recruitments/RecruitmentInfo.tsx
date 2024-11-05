@@ -32,7 +32,6 @@ export default function RecruitmentInfo({
   const title = language === 'korean' ? koreanTitle : vietnameseTitle;
 
   const goToRecruitmentDetails = (recruitmentId: number) => {
-    console.log('recruitmentId: ', recruitmentId);
     navigate(ROUTE_PATH.RECRUIT.replace(':recruitmentId', recruitmentId.toString()));
   };
 

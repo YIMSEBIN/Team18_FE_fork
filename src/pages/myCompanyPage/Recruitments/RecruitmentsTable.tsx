@@ -18,7 +18,7 @@ export default function RecruitmentsTable({ recruitmentList }: Props) {
   const [closedRecruitment, setClosedRecruitment] = useState<{ [key: number]: boolean }>({});
   const { language } = useLanguage();
 
-  const handleApplicantClick = (companyId: string, recruitmentId: number) => {
+  const goToApplicantsPage = (companyId: string, recruitmentId: number) => {
     navigate(
       ROUTE_PATH.APPLICANTS.replace(':companyId', companyId).replace(':recruitmentId', recruitmentId.toString()),
     );
@@ -60,10 +60,7 @@ export default function RecruitmentsTable({ recruitmentList }: Props) {
                     </Typo>
                   </Flex>
                   <Flex css={buttonGroupStyle}>
-                    <Button
-                      css={buttonStyle}
-                      onClick={() => handleApplicantClick(companyId!, recruitment.recruitmentId)}
-                    >
+                    <Button css={buttonStyle} onClick={() => goToApplicantsPage(companyId!, recruitment.recruitmentId)}>
                       지원자 보러가기
                     </Button>
                     <Button

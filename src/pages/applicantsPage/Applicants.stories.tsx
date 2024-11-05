@@ -6,7 +6,14 @@ const meta: Meta<typeof Applicants> = {
   title: 'pages/Applicants',
   component: Applicants,
   tags: ['autodocs'],
-  args: { recruitment, applicantList },
+  argTypes: {
+    recruitmentData: { control: 'object' },
+    applicantsData: { control: 'object' },
+  },
+  args: {
+    recruitmentData: recruitment,
+    applicantsData: applicantList,
+  },
 };
 
 export default meta;
