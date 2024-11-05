@@ -1,7 +1,12 @@
 import theme from '@/assets/theme';
 import { Select, Icon, List } from '@/components/common';
-import useGlobalSelect from '@/components/common/Select/hooks/useGlobalSelect';
+import { useLanguage } from '@/components/providers/Language.provider';
 import { responsiveStyle } from '@/utils/responsive';
+
+type LanguageOptionType = {
+  value: string;
+  text: string;
+};
 
 const triggerStyle = {
   minWidth: '80px',
@@ -30,18 +35,22 @@ const languageOptions = [
 ];
 
 export default function LanguageFilter() {
-  const { selectedOption, handleSelect } = useGlobalSelect(languageOptions[0]);
+  const { language, setLanguage } = useLanguage();
+
+  const changeLanguage = (option: LanguageOptionType) => {
+    setLanguage(option.value);
+  };
 
   return (
     <Select.Root>
       <Select.Trigger icon={<Icon.Arrow.DownBlue />} css={triggerStyle}>
-        {selectedOption.text}
+        {languageOptions.find((opt) => opt.value === language)?.text}
       </Select.Trigger>
       <Select.Content>
         <List
           items={languageOptions}
           renderItem={(option) => (
-            <Select.Option key={option.value} value={option.value} onClick={() => handleSelect(option)}>
+            <Select.Option key={option.value} value={option.value} onClick={() => changeLanguage(option)}>
               {option.text}
             </Select.Option>
           )}
