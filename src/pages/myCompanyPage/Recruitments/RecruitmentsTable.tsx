@@ -56,7 +56,7 @@ export default function RecruitmentsTable({ recruitmentList }: Props) {
                       {recruitment.companyName}
                     </Typo>
                     <Typo element="p" size="16px">
-                      {language === 'vietnamese' ? recruitment.vietnameseTitle : recruitment.koreanTitle}
+                      {language === 've' ? recruitment.vietnameseTitle : recruitment.koreanTitle}
                     </Typo>
                   </Flex>
                   <Flex css={buttonGroupStyle}>

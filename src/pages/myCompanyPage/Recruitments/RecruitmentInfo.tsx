@@ -29,7 +29,7 @@ export default function RecruitmentInfo({
 }: Props) {
   const { language } = useLanguage();
   const navigate = useNavigate();
-  const title = language === 'korean' ? koreanTitle : vietnameseTitle;
+  const title = language === 'ko' ? koreanTitle : vietnameseTitle;
 
   const goToRecruitmentDetails = (recruitmentId: number) => {
     navigate(ROUTE_PATH.RECRUIT.replace(':recruitmentId', recruitmentId.toString()));
