@@ -19,11 +19,13 @@ import { useNavigate } from 'react-router-dom';
 import ROUTE_PATH from '@/routes/path';
 import { useUser } from '@/components/providers/User.provider';
 import { userLocalStorage } from '@/utils/storage';
+import { useTranslation } from 'react-i18next';
 
 export default function Header() {
   const navigate = useNavigate();
   const [menuOpen, toggleMenu] = useToggle();
   const { user, setUser } = useUser();
+  const { t } = useTranslation();
 
   const goToHome = () => {
     startTransition(() => {
@@ -65,20 +67,20 @@ export default function Header() {
           <LanguageFilter />
           {!user ? (
             <Button style={customButtonStyle} onClick={login}>
-              로그인
+              {t('header.login')}
             </Button>
           ) : (
             <>
               {user.type === 'employer' && (
                 <Button design="outlined" style={commonButtonStyle} onClick={goToPostNotice}>
-                  채용공고 등록
+                  {t('header.post_notice')}
                 </Button>
               )}
               <Flex justifyContent="center" alignItems="center" onClick={goToMyPage}>
                 <Image url={user.profileImage} size={{ width: '40px', height: '40px' }} css={imageStyle} />
               </Flex>
               <Button style={customButtonStyle} onClick={logout}>
-                로그아웃
+                {t('header.logout')}
               </Button>
             </>
           )}
