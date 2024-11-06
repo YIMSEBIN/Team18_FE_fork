@@ -5,6 +5,7 @@ import { ApplicantData } from '@/types';
 import { buttonGroupStyle, buttonsCellStyle, buttonStyle } from './ApplicantsTable.styles';
 import ApplicantProfile from '../ApplicantList/ApplicantProfile';
 import useToggle from '@/hooks/useToggle';
+import { useTranslation } from 'react-i18next';
 
 type IdProps = {
   resumeId: number;
@@ -20,6 +21,7 @@ export default function ApplicantsTable({ applicantList }: Props) {
   const [selectedUserId, setSelectedUserId] = useState<number | null>(null);
   const [isToggle, toggle] = useToggle();
   const [selectedApplyId, setSelectedApplyId] = useState<number | null>(null);
+  const { t } = useTranslation();
 
   const openModal = (userId: number, applyId: number) => {
     setSelectedUserId(userId);
@@ -42,9 +44,9 @@ export default function ApplicantsTable({ applicantList }: Props) {
       <Table>
         <thead>
           <tr>
-            <Th>이름</Th>
-            <Th>국적</Th>
-            <Th>한국어 실력</Th>
+            <Th>{t('applicants.table_headers.name')}</Th>
+            <Th>{t('applicants.table_headers.nation')}</Th>
+            <Th>{t('applicants.table_headers.korean_language_level')}</Th>
             <Th></Th>
           </tr>
         </thead>
@@ -62,10 +64,10 @@ export default function ApplicantsTable({ applicantList }: Props) {
                       onClick={() => profileOpenModal({ resumeId: applicant.resumeId, applyId: applicant.applyId })}
                       css={buttonStyle}
                     >
-                      지원서
+                      {t('applicants.buttons.view_resume')}
                     </Button>
                     <Button css={buttonStyle} onClick={() => openModal(applicant.userId, applicant.applyId)}>
-                      계약하기
+                      {t('applicants.buttons.create_contract')}
                     </Button>
                   </Flex>
                 </Td>
