@@ -1,8 +1,8 @@
 import { Button, Flex, Input, Modal } from '@/components/common';
 import { ChangeEvent, useMemo, useState } from 'react';
+import { useRegisterVisaInfo } from '@/apis/applicants/hooks/useRegisterVisaInfo';
 import { buttonStyle, ErrorMessage, Form, inputStyle } from './VisaRegistrationForm.styles';
 import { validateForeignerNumber } from './validateForeignerNumber';
-import { useRegisterVisaInfo } from '@/apis/applicants/hooks/useRegisterVisaInfo';
 
 export default function VisaRegistrationForm() {
   const [foreignerIdNumber, setForeignerNumber] = useState('');
@@ -78,7 +78,6 @@ export default function VisaRegistrationForm() {
         <Modal
           textChildren="등록이 완료되었습니다."
           buttonChildren={<Button onClick={closeModal}>확인</Button>}
-          /* onClose 부분 추후 수정 예정 */
           onClose={closeModal}
         />
       )}
