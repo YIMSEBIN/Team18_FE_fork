@@ -7,9 +7,9 @@ import { Spinner } from '@/components/common';
 import { useGetRecruitmentsDetail } from '@/apis/recruitmentsDetail/useRecruitmentsDetail';
 
 export default function Recruit() {
-  const { postId = '1' } = useParams();
+  const { recruitmentId = '1' } = useParams();
 
-  const { data, isLoading } = useGetRecruitmentsDetail(postId);
+  const { data, isLoading } = useGetRecruitmentsDetail(Number(recruitmentId));
 
   if (isLoading || !data) {
     return <Spinner />;
