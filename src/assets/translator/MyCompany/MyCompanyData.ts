@@ -1,30 +1,30 @@
 import { Languages } from '../Languages';
 
-export const MyCompanyData = {
+export const myCompanyData = {
   [Languages.KO]: {
-    MY_RECRUITMENTS: '내 공고글',
-    TOTAL_RECRUITMENTS: (count: number) => `총 ${count}건`,
-    TABLE_HEADERS: {
-      LOCATION: '근무지',
-      TITLE: '공고 제목',
+    my_recruitments: '내 공고글',
+    total_recruitments: '총 {{count}}건',
+    table_headers: {
+      location: '근무지',
+      title: '공고 제목',
     },
-    BUTTONS: {
-      VIEW_APPLICANTS: '지원자 보러가기',
-      CLOSE_RECRUITMENT: '마감하기',
-      CLOSED_RECRUITMENT: '마감완료',
+    buttons: {
+      view_applicants: '지원자 보러가기',
+      close_recruitment: '마감하기',
+      closed_recruitment: '마감완료',
     },
   },
   [Languages.VE]: {
-    MY_RECRUITMENTS: 'Thông báo tuyển dụng của tôi',
-    TOTAL_RECRUITMENTS: (count: number) => `Tổng cộng ${count} bài`,
-    TABLE_HEADERS: {
-      LOCATION: 'Nơi làm việc',
-      TITLE: 'Tiêu đề thông báo',
+    my_recruitments: 'Thông báo tuyển dụng của tôi',
+    total_recruitments: 'Tổng cộng {{count}} bài',
+    table_headers: {
+      location: 'Nơi làm việc',
+      title: 'Tiêu đề thông báo',
     },
-    BUTTONS: {
-      VIEW_APPLICANTS: 'Xem người ứng tuyển',
-      CLOSE_RECRUITMENT: 'Đóng tuyển dụng',
-      CLOSED_RECRUITMENT: 'Đã đóng tuyển dụng',
+    buttons: {
+      view_applicants: 'Xem người ứng tuyển',
+      close_recruitment: 'Đóng tuyển dụng',
+      closed_recruitment: 'Đã đóng tuyển dụng',
     },
   },
 };
