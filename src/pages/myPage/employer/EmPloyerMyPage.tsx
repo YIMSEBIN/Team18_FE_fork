@@ -5,9 +5,11 @@ import { flexStyle, innerContainerStyle, signButtonStyle, spinnerFlexStyle, typo
 import { useGetMyCompanies } from '@/apis/companies/hooks/useGetMyCompanies';
 import { useNavigate } from 'react-router-dom';
 import ROUTE_PATH from '@/routes/path';
+import { useTranslation } from 'react-i18next';
 
 export default function EmployerMyPage() {
   const { data: companyList, isLoading } = useGetMyCompanies();
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   const goToSignPage = () => {
@@ -21,12 +23,12 @@ export default function EmployerMyPage() {
           <Flex direction="column" gap={{ y: '60px' }} css={{ position: 'relative', minHeight: '600px' }}>
             <Flex justifyContent="space-between" alignItems="center" css={flexStyle}>
               <Typo element="h2" size="36px" style={typoStyle} bold>
-                사장님, 안녕하세요!
+                {t('employerMyPage.greeting')}
               </Typo>
               <Button design="outlined" css={signButtonStyle} onClick={goToSignPage}>
                 <Flex justifyContent="space-between">
                   <Typo size="20px" bold>
-                    사인 등록
+                    {t('employerMyPage.register_sign')}
                   </Typo>
                   <Icon.EmployeePage.Pen />
                 </Flex>

@@ -4,6 +4,7 @@ import CompanyInfo from '@/pages/myPage/employer/Companies/CompanyInfo';
 import { cellStyle, imageSize, imageStyle } from './CompaniesTable.styles';
 import { useNavigate } from 'react-router-dom';
 import ROUTE_PATH from '@/routes/path';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   companyList: CompanyData[];
@@ -11,6 +12,7 @@ type Props = {
 
 export default function CompaniesTable({ companyList }: Props) {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const goToMyCompany = (companyId: number) => {
     navigate(ROUTE_PATH.MY_COMPANY.replace(':companyId', companyId.toString()));
@@ -20,7 +22,7 @@ export default function CompaniesTable({ companyList }: Props) {
     <Table>
       <thead>
         <tr>
-          <Th>회사 정보</Th>
+          <Th>{t('employerMyPage.company_info')}</Th>
         </tr>
       </thead>
       <tbody>

@@ -1,18 +1,18 @@
 import { Languages } from '../Languages';
 
-export const EmployerMyPageData = {
+export const employerMyPageData = {
   [Languages.KO]: {
-    GREETING: '사장님, 안녕하세요!',
-    REGISTER_SIGN: '사인 등록',
-    MY_COMPANIES: '내 회사',
-    TOTAL_COMPANIES: (count: number) => `총 ${count} 곳`,
-    COMPANY_INFO: '회사 정보',
+    greeting: '사장님, 안녕하세요!',
+    register_sign: '사인 등록',
+    my_companies: '내 회사',
+    total_companies: '총 {{count}} 곳',
+    company_info: '회사 정보',
   },
   [Languages.VE]: {
-    GREETING: 'Chủ doanh nghiệp, xin chào!',
-    REGISTER_SIGN: 'Đăng ký chữ ký',
-    MY_COMPANIES: 'Công ty của tôi',
-    TOTAL_COMPANIES: (count: number) => `Tổng cộng ${count} công ty`,
-    COMPANY_INFO: 'Thông tin công ty',
+    greeting: 'Chủ doanh nghiệp, xin chào!',
+    register_sign: 'Đăng ký chữ ký',
+    my_companies: 'Công ty của tôi',
+    total_companies: 'Tổng cộng {{count}} công ty',
+    company_info: 'Thông tin công ty',
   },
 };
