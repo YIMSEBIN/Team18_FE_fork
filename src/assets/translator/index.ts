@@ -1,4 +1,5 @@
 import { applicantsData } from './Applicants/applicantsData';
+import { contractModalData } from './Applicants/ContractModal/contractModalData';
 import { employerMyPageData } from './EmployerMyPage/employerMyPageData';
 import { Languages } from './Languages';
 import { myCompanyData } from './MyCompany/myCompanyData';
@@ -11,6 +12,7 @@ export const KO = {
   myCompany: { ...myCompanyData[Languages.KO] },
   applicants: { ...applicantsData[Languages.KO] },
   registerVisa: { ...registerVisaData[Languages.KO] },
+  contractModal: { ...contractModalData[Languages.KO] },
 };
 
 export const VE = {
@@ -19,4 +21,5 @@ export const VE = {
   myCompany: { ...myCompanyData[Languages.VE] },
   applicants: { ...applicantsData[Languages.VE] },
   registerVisa: { ...registerVisaData[Languages.VE] },
+  contractModal: { ...contractModalData[Languages.VE] },
 };
