@@ -1,16 +1,24 @@
-import { Button, Flex, List, Table, Td, Th } from '@/components/common';
+import { Button, Flex, List, Table, Td, Th, Modal } from '@/components/common';
 import { useState } from 'react';
 import ContractModal from './Contract/ContractModal';
 import { ApplicantData } from '@/types';
 import { buttonGroupStyle, buttonsCellStyle, buttonStyle } from './ApplicantsTable.styles';
+import ApplicantProfile from '../ApplicantList/ApplicantProfile';
+import useToggle from '@/hooks/useToggle';
 
+type IdProps = {
+  resumeId: number;
+  applyId: number;
+};
 type Props = {
   applicantList: ApplicantData[];
 };
 
 export default function ApplicantsTable({ applicantList }: Props) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [IdInfo, setIdInfo] = useState<IdProps | null>(null);
   const [selectedUserId, setSelectedUserId] = useState<number | null>(null);
+  const [isToggle, toggle] = useToggle();
   const [selectedApplyId, setSelectedApplyId] = useState<number | null>(null);
 
   const openModal = (userId: number, applyId: number) => {
@@ -25,6 +33,10 @@ export default function ApplicantsTable({ applicantList }: Props) {
     setSelectedApplyId(null);
   };
 
+  const profileOpenModal = ({ resumeId, applyId }: IdProps) => {
+    setIdInfo((prev) => ({ ...prev, resumeId, applyId }));
+    toggle();
+  };
   return (
     <>
       <Table>
@@ -46,7 +58,12 @@ export default function ApplicantsTable({ applicantList }: Props) {
                 <Td>{applicant.korean}</Td>
                 <Td css={buttonsCellStyle}>
                   <Flex justifyContent="flex-end" alignItems="center" gap={{ x: '20px' }} css={buttonGroupStyle}>
-                    <Button css={buttonStyle}>지원서</Button>
+                    <Button
+                      onClick={() => profileOpenModal({ resumeId: applicant.resumeId, applyId: applicant.applyId })}
+                      css={buttonStyle}
+                    >
+                      지원서
+                    </Button>
                     <Button css={buttonStyle} onClick={() => openModal(applicant.userId, applicant.applyId)}>
                       계약하기
                     </Button>
@@ -59,6 +76,20 @@ export default function ApplicantsTable({ applicantList }: Props) {
       </Table>
       {selectedUserId && selectedApplyId && (
         <ContractModal isOpen={isModalOpen} close={closeModal} userId={selectedUserId} applyId={selectedApplyId} />
+      )}
+      {isToggle && IdInfo && (
+        <Modal
+          css={{
+            width: '100%',
+            maxWidth: '450px',
+            '@media (max-width: 480px)': {
+              width: '90%',
+            },
+          }}
+          textChildren={<ApplicantProfile resumeId={IdInfo.resumeId} applyId={IdInfo.applyId} />}
+          buttonChildren={<Button onClick={toggle}>닫기</Button>}
+          onClose={toggle}
+        />
       )}
     </>
   );
