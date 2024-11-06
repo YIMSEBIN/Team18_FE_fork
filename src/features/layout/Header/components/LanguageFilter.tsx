@@ -2,6 +2,7 @@ import theme from '@/assets/theme';
 import { Select, Icon, List } from '@/components/common';
 import { useLanguage } from '@/components/providers/Language.provider';
 import { responsiveStyle } from '@/utils/responsive';
+import i18n from '@/assets/translator/i18n';
 
 type LanguageOptionType = {
   value: string;
@@ -23,12 +24,12 @@ const triggerStyle = {
 
 const languageOptions = [
   {
-    value: 'korean',
+    value: 'ko',
     text: '한국어',
     action: () => console.log('한국어'),
   },
   {
-    value: 'vietnamese',
+    value: 've',
     text: '베트남어',
     action: () => console.log('베트남어'),
   },
@@ -39,6 +40,7 @@ export default function LanguageFilter() {
 
   const changeLanguage = (option: LanguageOptionType) => {
     setLanguage(option.value);
+    i18n.changeLanguage(option.value);
   };
 
   return (
