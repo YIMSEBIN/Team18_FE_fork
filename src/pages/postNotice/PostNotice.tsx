@@ -2,25 +2,50 @@ import { usePostNotice } from '@/apis/postNotice/hooks/usePostNotice';
 import { Button, Flex, Input, Typo } from '@/components/common';
 import Layout from '@/features/layout';
 import ROUTE_PATH from '@/routes/path';
+import { NoticeRequestData } from '@/types';
 import styled from '@emotion/styled';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+const default_inputs: NoticeRequestData = {
+  title: '',
+  companyScale: '',
+  area: '',
+  salary: '',
+  workDuration: '',
+  workDays: '',
+  workType: '',
+  workHours: '',
+  requestedCareer: '',
+  majorBusiness: '',
+  eligibilityCriteria: '',
+  preferredConditions: '',
+  employerName: '',
+  companyName: '',
+};
 
 export default function PostNotice() {
   const mutation = usePostNotice();
   const navigate = useNavigate();
 
-  const [inputs, setInputs] = useState({
-    salary: '',
-    workingDuration: '',
-    workDays: '',
-    workHours: '',
-    workType: '',
-    eligibilityCriteria: '',
-    preferredConditions: '',
-  });
+  const [inputs, setInputs] = useState({ ...default_inputs });
 
-  const { salary, workingDuration, workDays, workHours, workType, eligibilityCriteria, preferredConditions } = inputs;
+  const {
+    title,
+    companyScale,
+    area,
+    salary,
+    workDuration,
+    workDays,
+    workType,
+    workHours,
+    requestedCareer,
+    majorBusiness,
+    eligibilityCriteria,
+    preferredConditions,
+    employerName,
+    companyName,
+  } = inputs;
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target;
@@ -52,14 +77,57 @@ export default function PostNotice() {
                 구인 글 업로드
               </Typo>
               <InputContainer>
+                <Input label="공고제목" name="title" style={InputStyle} value={title} onChange={onChange}></Input>
+              </InputContainer>
+              <InputContainer>
+                <Input
+                  label="회사명"
+                  name="companyName"
+                  style={InputStyle}
+                  value={companyName}
+                  onChange={onChange}
+                ></Input>
+              </InputContainer>
+              <InputContainer>
+                <Input
+                  label="담당자명"
+                  name="employerName"
+                  style={InputStyle}
+                  value={employerName}
+                  onChange={onChange}
+                ></Input>
+              </InputContainer>
+              <InputContainer>
+                <Input
+                  label="회사규모"
+                  name="companyScale"
+                  style={InputStyle}
+                  value={companyScale}
+                  onChange={onChange}
+                ></Input>
+              </InputContainer>
+              <InputContainer>
+                <Input label="근무지 주소" name="area" style={InputStyle} value={area} onChange={onChange}></Input>
+              </InputContainer>
+              <InputContainer>
                 <Input label="급여" name="salary" style={InputStyle} value={salary} onChange={onChange}></Input>
               </InputContainer>
               <InputContainer>
                 <Input
-                  label="근무기간"
-                  name="workingDuration"
+                  label="업무내용"
+                  name="majorBusiness"
                   style={InputStyle}
-                  value={workingDuration}
+                  value={majorBusiness}
+                  onChange={onChange}
+                ></Input>
+              </InputContainer>
+              <InputContainer>
+                <Input
+                  label="근무기간"
+                  labelStyle={{ width: '100px', textAlign: 'left' }}
+                  name="workDuration"
+                  style={InputStyle}
+                  value={workDuration}
                   onChange={onChange}
                 ></Input>
               </InputContainer>
@@ -77,6 +145,15 @@ export default function PostNotice() {
               </InputContainer>
               <InputContainer>
                 <Input label="고용형태" name="workType" style={InputStyle} value={workType} onChange={onChange}></Input>
+              </InputContainer>
+              <InputContainer>
+                <Input
+                  label="지원조건"
+                  name="requestedCareer"
+                  style={InputStyle}
+                  value={requestedCareer}
+                  onChange={onChange}
+                ></Input>
               </InputContainer>
               <InputContainer>
                 <Input
@@ -118,6 +195,9 @@ const InputContainer = styled.div`
   width: 700px;
   align-items: start;
   margin-top: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; // 요소들을 양쪽 끝으로 정렬
 `;
 
-const InputStyle = { width: '700px', height: '48px', marginTop: '12px' };
+const InputStyle = { width: '600px', height: '48px', marginTop: '12px' };
