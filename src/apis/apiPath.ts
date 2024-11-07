@@ -14,14 +14,17 @@ export const APIPath = {
   getForeigner: `${BASE_URL}/visa/:userId`,
   registerVisa: `${BASE_URL}/visa`,
   registerCompany: `${BASE_URL}/company`,
-  apply: '/api/application/',
+  apply: `${BASE_URL}/application/:recruitmentId`,
+  resume: `${BASE_URL}/resumes`,
   recruitmentsDetail: '/api/recruitments/:recruitmentId',
   getApplicantProfile: '/api/resumes/:resumeId/:applyId',
   closeRecruitment: `${BASE_URL}/recruitment/hiringClose/:recruitmentId`,
+  requiredFieldCheck: `${BASE_URL}/application`,
 };
 
 export const getDynamicAPIPath = {
   downloadContract: (applyId: number) => APIPath.downloadContract.replace(':applyId', applyId.toString()),
+  apply: (recruitmentId: number) => APIPath.apply.replace(':recruitmentId', recruitmentId.toString()),
   getContract: (applyId: number) => APIPath.getContract.replace(':applyId', applyId.toString()),
   getMyRecruitments: (companyId: number) => APIPath.getMyRecruitments.replace(':companyId', companyId.toString()),
   getMyApplicants: (recruitmentId: number) =>
