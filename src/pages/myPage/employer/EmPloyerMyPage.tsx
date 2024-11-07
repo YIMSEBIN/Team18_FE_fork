@@ -1,7 +1,14 @@
 import { Button, Flex, Icon, InnerContainer, Spinner, Typo } from '@/components/common';
 import Layout from '@/features/layout';
 import CompanyList from '@/pages/myPage/employer/Companies/CompanyList';
-import { flexStyle, innerContainerStyle, signButtonStyle, spinnerFlexStyle, typoStyle } from './EmployerMyPage.styles';
+import {
+  flexStyle,
+  innerContainerStyle,
+  buttonStyle,
+  spinnerFlexStyle,
+  typoStyle,
+  buttonGroupStyle,
+} from './EmployerMyPage.styles';
 import { useGetMyCompanies } from '@/apis/companies/hooks/useGetMyCompanies';
 import { useNavigate } from 'react-router-dom';
 import ROUTE_PATH from '@/routes/path';
@@ -16,6 +23,10 @@ export default function EmployerMyPage() {
     navigate(ROUTE_PATH.REGISTERSIGN);
   };
 
+  const goToRegisterCompanyPage = () => {
+    navigate(ROUTE_PATH.REGISTERCOMPANY);
+  };
+
   return (
     <Layout>
       <div>
@@ -25,14 +36,24 @@ export default function EmployerMyPage() {
               <Typo element="h2" size="36px" style={typoStyle} bold>
                 {t('employerMyPage.greeting')}
               </Typo>
-              <Button design="outlined" css={signButtonStyle} onClick={goToSignPage}>
-                <Flex justifyContent="space-between">
-                  <Typo size="20px" bold>
-                    {t('employerMyPage.register_sign')}
-                  </Typo>
-                  <Icon.EmployeePage.Pen />
-                </Flex>
-              </Button>
+              <Flex justifyContent="flex-end" alignItems="center" gap={{ x: '20px' }} css={buttonGroupStyle}>
+                <Button design="outlined" css={buttonStyle} onClick={goToRegisterCompanyPage}>
+                  <Flex justifyContent="space-between">
+                    <Typo size="20px" bold>
+                      {t('employerMyPage.register_company')}
+                    </Typo>
+                    <Icon.EmployeePage.Bag />
+                  </Flex>
+                </Button>
+                <Button design="outlined" css={buttonStyle} onClick={goToSignPage}>
+                  <Flex justifyContent="space-between">
+                    <Typo size="20px" bold>
+                      {t('employerMyPage.register_sign')}
+                    </Typo>
+                    <Icon.EmployeePage.Pen />
+                  </Flex>
+                </Button>
+              </Flex>
             </Flex>
             {isLoading ? (
               <Flex justifyContent="center" alignItems="center" css={spinnerFlexStyle}>
