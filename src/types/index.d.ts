@@ -58,3 +58,20 @@ export type RecruitmentItem = {
   area: string;
   hiring?: boolean;
 };
+
+export type NoticeRequestData = {
+  title?: string;
+  companyScale?: string;
+  area?: string;
+  salary?: string;
+  workDuration?: string;
+  workDays?: string;
+  workType?: string;
+  workHours?: string;
+  requestedCareer?: string;
+  majorBusiness?: string;
+  eligibilityCriteria?: string;
+  preferredConditions?: string;
+  employerName?: string;
+  companyName?: string;
+};
