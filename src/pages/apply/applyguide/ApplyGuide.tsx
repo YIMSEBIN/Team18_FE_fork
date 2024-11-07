@@ -2,7 +2,7 @@ import Layout from '@/features/layout';
 import styled from '@emotion/styled';
 import { Typo, Button } from '@/components/common';
 import { ReactNode } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 const IndentText = ({ children }: { children: ReactNode }) => <Typo style={{ marginLeft: '20px' }}>{children}</Typo>;
@@ -15,9 +15,9 @@ const SpacingText = ({ children, bold }: { children: ReactNode; bold?: boolean }
 
 export default function ApplyGuide() {
   const nav = useNavigate();
-
+  const { recruitmentId } = useParams();
   const navigateToApply = () => {
-    nav('/apply');
+    nav(`/apply/${recruitmentId}`);
   };
   const { t } = useTranslation();
 

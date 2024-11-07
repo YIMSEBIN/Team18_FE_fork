@@ -1,5 +1,5 @@
 export const requiredFieldCheckData = {
   resumeExistence: true,
-  visaExistence: false,
+  visaExistence: true,
   foreignerIdNumberExistence: true,
 };

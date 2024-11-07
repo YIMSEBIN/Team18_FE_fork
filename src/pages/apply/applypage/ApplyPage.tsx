@@ -4,10 +4,12 @@ import { Flex, Typo, Button, Modal } from '@/components/common';
 import { useApplyHook } from './useApplyHook';
 import ApplyInput from './ApplyInput';
 import { useTranslation } from 'react-i18next';
+import { useParams } from 'react-router-dom';
 
 export default function ApplyPage() {
   const { toggle, isToggle, register, handleSubmit, onSubmit, handleApplySubmit, errors } = useApplyHook();
   const { t } = useTranslation();
+  const { recruitmentId } = useParams();
   return (
     <Layout>
       <Flex justifyContent="center" alignItems="center">
@@ -53,10 +55,12 @@ export default function ApplyPage() {
             <CustomBtn type="submit">{t('apply.submit')}</CustomBtn>
           </StyledForm>
         </ApplyCard>
-        {isToggle && (
+        {isToggle && recruitmentId && (
           <Modal
             textChildren={<ModalContainer>{t('apply.submitMent')}</ModalContainer>}
-            buttonChildren={<CustomBtn onClick={handleApplySubmit}>{t('apply.submit')}</CustomBtn>}
+            buttonChildren={
+              <CustomBtn onClick={() => handleApplySubmit(Number(recruitmentId))}>{t('apply.submit')}</CustomBtn>
+            }
             onClose={toggle}
           />
         )}

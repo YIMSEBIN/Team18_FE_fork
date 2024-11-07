@@ -5,8 +5,8 @@ export const AUTH = {
 } as const;
 
 export const APPLY = {
-  GUIDE: '/applyguide',
-  APPLYPAGE: '/apply',
+  GUIDE: '/applyguide/:recruitmentId',
+  APPLYPAGE: '/apply/:recruitmentId',
 };
 
 export const MY_PAGE = {
