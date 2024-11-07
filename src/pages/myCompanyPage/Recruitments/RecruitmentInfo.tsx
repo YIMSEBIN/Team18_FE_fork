@@ -15,6 +15,7 @@ import {
 import { useLanguage } from '@/components/providers/Language.provider';
 import { useNavigate } from 'react-router-dom';
 import ROUTE_PATH from '@/routes/path';
+import { useTranslation } from 'react-i18next';
 
 type Props = Omit<RecruitmentItem, 'workHours' | 'hiring'>;
 
@@ -29,7 +30,8 @@ export default function RecruitmentInfo({
 }: Props) {
   const { language } = useLanguage();
   const navigate = useNavigate();
-  const title = language === 'korean' ? koreanTitle : vietnameseTitle;
+  const title = language === 'ko' ? koreanTitle : vietnameseTitle;
+  const { t } = useTranslation();
 
   const goToRecruitmentDetails = (recruitmentId: number) => {
     navigate(ROUTE_PATH.RECRUIT.replace(':recruitmentId', recruitmentId.toString()));
@@ -52,14 +54,16 @@ export default function RecruitmentInfo({
           </Flex>
           <Flex alignItems="center" gap={{ x: '12px' }}>
             <SalaryIcon />
-            <Typo color="gray">시급 {salary}</Typo>
+            <Typo color="gray">
+              {t('applicants.salary')} {salary}
+            </Typo>
           </Flex>
         </Flex>
       </Flex>
       <Button css={buttonStyle} onClick={() => goToRecruitmentDetails(recruitmentId)}>
         <Flex gap={{ x: '15px' }}>
           <Typo size="16px" color="white" style={buttonTextStyle}>
-            자세히 보러가기
+            {t('applicants.view_details')}
           </Typo>
           <Icon.Arrow.RightWhite />
         </Flex>

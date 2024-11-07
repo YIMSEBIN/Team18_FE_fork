@@ -6,6 +6,7 @@ import ROUTE_PATH from '@/routes/path';
 import { useCloseRecruitment } from '@/apis/recruitments/hooks/useCloseRecruitment';
 import { useState } from 'react';
 import { useLanguage } from '@/components/providers/Language.provider';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   recruitmentList: RecruitmentItem[];
@@ -17,6 +18,7 @@ export default function RecruitmentsTable({ recruitmentList }: Props) {
   const mutation = useCloseRecruitment();
   const [closedRecruitment, setClosedRecruitment] = useState<{ [key: number]: boolean }>({});
   const { language } = useLanguage();
+  const { t } = useTranslation();
 
   const goToApplicantsPage = (companyId: string, recruitmentId: number) => {
     navigate(
@@ -39,8 +41,8 @@ export default function RecruitmentsTable({ recruitmentList }: Props) {
     <Table>
       <thead>
         <tr>
-          <Th>근무지</Th>
-          <Th>공고 제목</Th>
+          <Th>{t('myCompany.table_headers.location')}</Th>
+          <Th>{t('myCompany.table_headers.title')}</Th>
         </tr>
       </thead>
       <tbody>
@@ -56,12 +58,12 @@ export default function RecruitmentsTable({ recruitmentList }: Props) {
                       {recruitment.companyName}
                     </Typo>
                     <Typo element="p" size="16px">
-                      {language === 'vietnamese' ? recruitment.vietnameseTitle : recruitment.koreanTitle}
+                      {language === 've' ? recruitment.vietnameseTitle : recruitment.koreanTitle}
                     </Typo>
                   </Flex>
                   <Flex css={buttonGroupStyle}>
                     <Button css={buttonStyle} onClick={() => goToApplicantsPage(companyId!, recruitment.recruitmentId)}>
-                      지원자 보러가기
+                      {t('myCompany.buttons.view_applicants')}
                     </Button>
                     <Button
                       css={buttonStyle}
@@ -69,7 +71,9 @@ export default function RecruitmentsTable({ recruitmentList }: Props) {
                       design={closedRecruitment[recruitment.recruitmentId] ? 'deactivate' : 'default'}
                       disabled={closedRecruitment[recruitment.recruitmentId]}
                     >
-                      {closedRecruitment[recruitment.recruitmentId] ? '마감완료' : '마감하기'}
+                      {closedRecruitment[recruitment.recruitmentId]
+                        ? t('myCompany.buttons.closed_recruitment')
+                        : t('myCompany.buttons.close_recruitment')}
                     </Button>
                   </Flex>
                 </Flex>
