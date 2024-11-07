@@ -8,17 +8,20 @@ import { useGetMyApplication } from '@/apis/employee/hooks/useGetMyApplication';
 import { useNavigate } from 'react-router-dom';
 import ROUTE_PATH from '@/routes/path';
 import { useTranslation } from 'react-i18next';
+import { userLocalStorage } from '@/utils/storage';
 
 export default function EmployeeMyPage() {
   const { t } = useTranslation();
   const { data: myRecruitList } = useGetMyApplication();
   const navigate = useNavigate();
 
+  const profileImage = userLocalStorage.getUser()?.profileImage;
+
   return (
     <Layout>
       <InnerContainer style={{ justifyContent: 'center', width: '70%', padding: '60px 0' }}>
         <Section>
-          <EmployeeProfile />
+          <EmployeeProfile profileImage={profileImage} />
           <ColumnSection>
             <CardButton
               design="outlined"
