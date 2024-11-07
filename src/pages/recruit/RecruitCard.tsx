@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import useToggle from '@/hooks/useToggle';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { userLocalStorage } from '@/utils/storage';
 
 export default function RecruitCard({
   koreanTitle,
@@ -19,10 +20,13 @@ export default function RecruitCard({
   const [isToggle, toggle] = useToggle();
   const [falseValues, setFalseValues] = useState<string[]>([]);
   const nav = useNavigate();
-
+  const userType = userLocalStorage.getUser()?.type || '';
   const checkHandler = (value: RequiredFieldCheckProps | undefined) => {
     if (!value) return;
-    // if (고용주) return;
+    if (userType === 'employer') {
+      alert('고용주 계정으로는 지원할 수 없습니다.');
+      return;
+    }
     const falseValues = Object.keys(value).filter((key) => !value[key as keyof RequiredFieldCheckProps]);
     setFalseValues(falseValues);
     if (falseValues.length === 0) {
