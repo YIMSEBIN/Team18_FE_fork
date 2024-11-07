@@ -7,7 +7,7 @@ export const AUTH = {
 export const APPLY = {
   GUIDE: '/applyguide',
   APPLYPAGE: '/apply',
-};
+} as const;
 
 export const MY_PAGE = {
   EMPLOYER: '/employer-my-page',
@@ -23,6 +23,7 @@ export const CONTRACT = {
 } as const;
 
 const ROUTE_PATH = {
+  PREV: -1,
   HOME: '/',
   RECRUIT: '/recruit/:recruitmentId',
   POST_NOTICE: '/post-notice',
