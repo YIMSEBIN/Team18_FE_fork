@@ -70,6 +70,7 @@ export default function EmployerContract() {
                 <InputContainer>
                   <Input
                     label={t('contract.WORKING_PLACE')}
+                    name="workingPlace"
                     value={workingPlace}
                     onChange={onChange}
                     style={InputStyle}
@@ -78,6 +79,7 @@ export default function EmployerContract() {
                 <InputContainer>
                   <Input
                     label={t('contract.RESPONSIBILITIES')}
+                    name="responsibilities"
                     value={responsibilities}
                     onChange={onChange}
                     style={InputStyle}
@@ -86,27 +88,47 @@ export default function EmployerContract() {
                 <InputContainer>
                   <Input
                     label={t('contract.WORKING_HOURS')}
+                    name="workingHours"
                     value={workingHours}
                     onChange={onChange}
                     style={InputStyle}
                   ></Input>
                 </InputContainer>
                 <InputContainer>
-                  <Input label={t('contract.DAY_OFF')} value={dayOff} onChange={onChange} style={InputStyle}></Input>
+                  <Input
+                    label={t('contract.DAY_OFF')}
+                    name="dayOff"
+                    value={dayOff}
+                    onChange={onChange}
+                    style={InputStyle}
+                  ></Input>
                 </InputContainer>
                 <InputContainer>
-                  <Input label={t('contract.SALARY')} value={salary} onChange={onChange} style={InputStyle}></Input>
+                  <Input
+                    label={t('contract.SALARY')}
+                    name="salary"
+                    value={salary}
+                    onChange={onChange}
+                    style={InputStyle}
+                  ></Input>
                 </InputContainer>
                 <InputContainer>
                   <Input
                     label={t('contract.ANNUAL_PAID_LEAVE')}
+                    name="annualPaidLeave"
                     value={annualPaidLeave}
                     onChange={onChange}
                     style={InputStyle}
                   ></Input>
                 </InputContainer>
                 <InputContainer>
-                  <Input label={t('contract.RULE')} value={rule} onChange={onChange} style={InputStyle}></Input>
+                  <Input
+                    label={t('contract.RULE')}
+                    name="rule"
+                    value={rule}
+                    onChange={onChange}
+                    style={InputStyle}
+                  ></Input>
                 </InputContainer>
               </InputWrapper>
               <Typo element="p" size="16px" style={{ fontWeight: 'bold', marginTop: '24px' }}>
