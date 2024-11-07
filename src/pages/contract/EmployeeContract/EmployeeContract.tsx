@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useGetMyContract } from '@/apis/contract/hooks/useGetMyContract';
 import { useFetchPostContract } from '@/apis/contract/hooks/usePostContract';
 import { Button, Flex, Typo } from '@/components/common';
@@ -26,7 +27,14 @@ export default function EmployeeContract() {
   const navigate = useNavigate();
   const contractData: ContractResponseData = contract || {};
 
+  const [isSigned, setIsSigned] = useState(false);
+  const [showSignError, setShowSignError] = useState(false);
+
   const handlePostSignEmployeeContract = () => {
+    if (!isSigned) {
+      setShowSignError(true);
+      return;
+    }
     mutation.mutate(
       { applyId: applicationId },
       {
@@ -34,11 +42,15 @@ export default function EmployeeContract() {
           navigate(ROUTE_PATH.HOME);
         },
         onError: () => {
-          // 이부분 에러처리 결정해야함.
           alert('값이 정상적으로 저장되지 않았습니다.');
         },
       },
     );
+  };
+
+  const handleSign = () => {
+    setIsSigned(!isSigned);
+    setShowSignError(false);
   };
 
   return (
@@ -87,13 +99,15 @@ export default function EmployeeContract() {
                 {t('contract.SENTENCE2')}
               </Typo>
               <ButtonWrapper>
-                <Button design="outlined" style={{ marginRight: '16px' }}>
-                  {t('contract.SIGN')}
-                </Button>
-                <Button design="default" onClick={handlePostSignEmployeeContract} style={{}}>
+                <SignButton design="outlined" isSigned={isSigned} onClick={handleSign}>
+                  <TypoWrapper isSigned={isSigned}>{t('contract.SIGN')}</TypoWrapper>
+                  {isSigned && <CheckIcon>✅</CheckIcon>}
+                </SignButton>
+                <Button design="default" onClick={handlePostSignEmployeeContract}>
                   {t('contract.SUBMIT')}
                 </Button>
               </ButtonWrapper>
+              {showSignError && !isSigned && <ErrorText>{t('contract.ERROR')}</ErrorText>}
             </Flex>
           </LineWrapper>
         </Flex>
@@ -127,4 +141,32 @@ const ButtonWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-top: 52px;
+`;
+
+const SignButton = styled(Button)<{ isSigned: boolean }>`
+  width: 150px;
+  background-color: ${({ isSigned }) => (isSigned ? '#3960d7' : 'white')};
+  color: ${({ isSigned }) => (isSigned ? 'white' : 'black')};
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+`;
+
+const TypoWrapper = styled.span<{ isSigned: boolean }>`
+  margin-right: ${({ isSigned }) => (isSigned ? '8px' : '0')};
+  transition: margin-right 0.3s;
+`;
+
+const CheckIcon = styled.span`
+  transition: opacity 0.3s;
+  opacity: 1;
+`;
+
+const ErrorText = styled.span`
+  color: red;
+  font-size: 12px;
+  margin-top: 8px;
 `;
