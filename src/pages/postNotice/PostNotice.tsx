@@ -5,6 +5,7 @@ import ROUTE_PATH from '@/routes/path';
 import { NoticeRequestData } from '@/types';
 import styled from '@emotion/styled';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
 const default_inputs: NoticeRequestData = {
@@ -25,6 +26,7 @@ const default_inputs: NoticeRequestData = {
 };
 
 export default function PostNotice() {
+  const { t } = useTranslation();
   const mutation = usePostNotice();
   const navigate = useNavigate();
 
@@ -74,14 +76,20 @@ export default function PostNotice() {
           <LineWrapper>
             <Flex direction="column" justifyContent="space-between" alignItems="center" style={{ width: '100%' }}>
               <Typo element="h1" size="20px" style={{ fontWeight: 'bold', marginBottom: '24px' }}>
-                구인 글 업로드
+                {t('postNotice.TITLE')}
               </Typo>
               <InputContainer>
-                <Input label="공고제목" name="title" style={InputStyle} value={title} onChange={onChange}></Input>
+                <Input
+                  label={t('postNotice.TITLE')}
+                  name="title"
+                  style={InputStyle}
+                  value={title}
+                  onChange={onChange}
+                ></Input>
               </InputContainer>
               <InputContainer>
                 <Input
-                  label="회사명"
+                  label={t('postNotice.COMPANY_NAME')}
                   name="companyName"
                   style={InputStyle}
                   value={companyName}
@@ -90,7 +98,7 @@ export default function PostNotice() {
               </InputContainer>
               <InputContainer>
                 <Input
-                  label="담당자명"
+                  label={t('postNotice.EMPLOYER_NAME')}
                   name="employerName"
                   style={InputStyle}
                   value={employerName}
@@ -99,7 +107,7 @@ export default function PostNotice() {
               </InputContainer>
               <InputContainer>
                 <Input
-                  label="회사규모"
+                  label={t('postNotice.COMPANY_SCALE')}
                   name="companyScale"
                   style={InputStyle}
                   value={companyScale}
@@ -107,14 +115,26 @@ export default function PostNotice() {
                 ></Input>
               </InputContainer>
               <InputContainer>
-                <Input label="근무지 주소" name="area" style={InputStyle} value={area} onChange={onChange}></Input>
-              </InputContainer>
-              <InputContainer>
-                <Input label="급여" name="salary" style={InputStyle} value={salary} onChange={onChange}></Input>
+                <Input
+                  label={t('postNotice.AREA')}
+                  name="area"
+                  style={InputStyle}
+                  value={area}
+                  onChange={onChange}
+                ></Input>
               </InputContainer>
               <InputContainer>
                 <Input
-                  label="업무내용"
+                  label={t('postNotice.SALARY')}
+                  name="salary"
+                  style={InputStyle}
+                  value={salary}
+                  onChange={onChange}
+                ></Input>
+              </InputContainer>
+              <InputContainer>
+                <Input
+                  label={t('postNotice.MAJOR_BUSINESS')}
                   name="majorBusiness"
                   style={InputStyle}
                   value={majorBusiness}
@@ -123,7 +143,7 @@ export default function PostNotice() {
               </InputContainer>
               <InputContainer>
                 <Input
-                  label="근무기간"
+                  label={t('postNotice.WORKDURATION')}
                   labelStyle={{ width: '100px', textAlign: 'left' }}
                   name="workDuration"
                   style={InputStyle}
@@ -132,11 +152,17 @@ export default function PostNotice() {
                 ></Input>
               </InputContainer>
               <InputContainer>
-                <Input label="근무요일" name="workDays" style={InputStyle} value={workDays} onChange={onChange}></Input>
+                <Input
+                  label={t('postNotice.WORKDAYS')}
+                  name="workDays"
+                  style={InputStyle}
+                  value={workDays}
+                  onChange={onChange}
+                ></Input>
               </InputContainer>
               <InputContainer>
                 <Input
-                  label="근무시간"
+                  label={t('postNotice.WORKHOURS')}
                   name="workHours"
                   style={InputStyle}
                   value={workHours}
@@ -144,11 +170,17 @@ export default function PostNotice() {
                 ></Input>
               </InputContainer>
               <InputContainer>
-                <Input label="고용형태" name="workType" style={InputStyle} value={workType} onChange={onChange}></Input>
+                <Input
+                  label={t('postNotice.WORKTYPE')}
+                  name="workType"
+                  style={InputStyle}
+                  value={workType}
+                  onChange={onChange}
+                ></Input>
               </InputContainer>
               <InputContainer>
                 <Input
-                  label="지원조건"
+                  label={t('postNotice.REQUESTED_CAREER')}
                   name="requestedCareer"
                   style={InputStyle}
                   value={requestedCareer}
@@ -157,7 +189,7 @@ export default function PostNotice() {
               </InputContainer>
               <InputContainer>
                 <Input
-                  label="비자조건"
+                  label={t('postNotice.ELIGIBILITY_CRITERIA')}
                   name="eligibilityCriteria"
                   style={InputStyle}
                   value={eligibilityCriteria}
@@ -166,7 +198,7 @@ export default function PostNotice() {
               </InputContainer>
               <InputContainer>
                 <Input
-                  label="우대사항"
+                  label={t('postNotice.PREFERRED_CONDITIONS')}
                   name="preferredConditions"
                   style={InputStyle}
                   value={preferredConditions}
@@ -174,7 +206,7 @@ export default function PostNotice() {
                 ></Input>
               </InputContainer>
               <Button onClick={handlePostNotice} design="default" style={{ marginTop: '52px' }}>
-                등록하기
+                {t('postNotice.SUBMIT')}
               </Button>
             </Flex>
           </LineWrapper>
