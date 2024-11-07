@@ -52,25 +52,49 @@ export default function PostNotice() {
                 구인 글 업로드
               </Typo>
               <InputContainer>
-                <Input label="급여" style={InputStyle} value={salary} onChange={onChange}></Input>
+                <Input label="급여" name="salary" style={InputStyle} value={salary} onChange={onChange}></Input>
               </InputContainer>
               <InputContainer>
-                <Input label="근무기간" style={InputStyle} value={workingDuration} onChange={onChange}></Input>
+                <Input
+                  label="근무기간"
+                  name="workingDuration"
+                  style={InputStyle}
+                  value={workingDuration}
+                  onChange={onChange}
+                ></Input>
               </InputContainer>
               <InputContainer>
-                <Input label="근무요일" style={InputStyle} value={workDays} onChange={onChange}></Input>
+                <Input label="근무요일" name="workDays" style={InputStyle} value={workDays} onChange={onChange}></Input>
               </InputContainer>
               <InputContainer>
-                <Input label="근무시간" style={InputStyle} value={workHours} onChange={onChange}></Input>
+                <Input
+                  label="근무시간"
+                  name="workHours"
+                  style={InputStyle}
+                  value={workHours}
+                  onChange={onChange}
+                ></Input>
               </InputContainer>
               <InputContainer>
-                <Input label="고용형태" style={InputStyle} value={workType} onChange={onChange}></Input>
+                <Input label="고용형태" name="workType" style={InputStyle} value={workType} onChange={onChange}></Input>
               </InputContainer>
               <InputContainer>
-                <Input label="비자조건" style={InputStyle} value={eligibilityCriteria} onChange={onChange}></Input>
+                <Input
+                  label="비자조건"
+                  name="eligibilityCriteria"
+                  style={InputStyle}
+                  value={eligibilityCriteria}
+                  onChange={onChange}
+                ></Input>
               </InputContainer>
               <InputContainer>
-                <Input label="우대사항" style={InputStyle} value={preferredConditions} onChange={onChange}></Input>
+                <Input
+                  label="우대사항"
+                  name="preferredConditions"
+                  style={InputStyle}
+                  value={preferredConditions}
+                  onChange={onChange}
+                ></Input>
               </InputContainer>
               <Button onClick={handlePostNotice} design="default" style={{ marginTop: '52px' }}>
                 등록하기
