@@ -4,9 +4,11 @@ import Layout from '@/features/layout';
 import ROUTE_PATH from '@/routes/path';
 import styled from '@emotion/styled';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
 
 export default function EmployerContract() {
+  const { t } = useTranslation();
   const { applyId: applicationId } = useParams();
   const mutation = useFetchPostContract();
   const navigate = useNavigate();
@@ -51,52 +53,67 @@ export default function EmployerContract() {
           <LineWrapper>
             <Flex direction="column" justifyContent="space-between" alignItems="center" style={{ width: '100%' }}>
               <Typo element="h1" size="24px" style={{ fontWeight: 'bold', marginBottom: '24px' }}>
-                근 로 계 약 서
+                {t('contract.CONTRACT')}
               </Typo>
               <InputWrapper>
                 <InputContainer>
-                  <Input label="1. 근무장소" value={workingPlace} onChange={onChange} style={InputStyle}></Input>
-                </InputContainer>
-                <InputContainer>
-                  <Input label="2. 업무내용" value={responsibilities} onChange={onChange} style={InputStyle}></Input>
+                  <Input
+                    label={t('contract.WORKING_PLACE')}
+                    value={workingPlace}
+                    onChange={onChange}
+                    style={InputStyle}
+                  ></Input>
                 </InputContainer>
                 <InputContainer>
                   <Input
-                    label="3. 근로일 및 근로일별 근로시간"
+                    label={t('contract.RESPONSIBILITIES')}
+                    value={responsibilities}
+                    onChange={onChange}
+                    style={InputStyle}
+                  ></Input>
+                </InputContainer>
+                <InputContainer>
+                  <Input
+                    label={t('contract.WORKING_HOURS')}
                     value={workingHours}
                     onChange={onChange}
                     style={InputStyle}
                   ></Input>
                 </InputContainer>
                 <InputContainer>
-                  <Input label="4. 주휴일" value={dayOff} onChange={onChange} style={InputStyle}></Input>
+                  <Input label={t('contract.DAY_OFF')} value={dayOff} onChange={onChange} style={InputStyle}></Input>
                 </InputContainer>
                 <InputContainer>
-                  <Input label="5. 임금" value={salary} onChange={onChange} style={InputStyle}></Input>
+                  <Input label={t('contract.SALARY')} value={salary} onChange={onChange} style={InputStyle}></Input>
                 </InputContainer>
                 <InputContainer>
-                  <Input label="6. 연차유급휴가" value={annualPaidLeave} onChange={onChange} style={InputStyle}></Input>
+                  <Input
+                    label={t('contract.ANNUAL_PAID_LEAVE')}
+                    value={annualPaidLeave}
+                    onChange={onChange}
+                    style={InputStyle}
+                  ></Input>
                 </InputContainer>
                 <InputContainer>
-                  <Input label="7. 취업규칙" value={rule} onChange={onChange} style={InputStyle}></Input>
+                  <Input label={t('contract.RULE')} value={rule} onChange={onChange} style={InputStyle}></Input>
                 </InputContainer>
               </InputWrapper>
               <Typo element="p" size="16px" style={{ fontWeight: 'bold', marginTop: '24px' }}>
-                사용자와 근로자는 각자가 근로계약, 취업규칙, 단체협약을 지키고 성실하게 이행하여야 한다.
+                {t('contract.SENTENCE1')}
               </Typo>
               <Typo element="p" size="16px" style={{ fontWeight: 'bold', marginTop: '24px' }}>
-                이 계약에서 정하지 않은 사항은 '근로기준법'에서 정하는 바에 따른다.
+                {t('contract.SENTENCE2')}
               </Typo>
               <ButtonWrapper>
                 <div>
                   <>
                     <input type="checkbox" />
-                    <label>서명하기</label>
+                    <label>{t('contract.SIGN')}</label>
                   </>
                 </div>
                 <div>
                   <Button design="default" onClick={handlePostContract}>
-                    제출하기
+                    {t('contract.SUBMIT')}
                   </Button>
                 </div>
               </ButtonWrapper>
