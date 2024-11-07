@@ -9,7 +9,7 @@ export interface RecruitCardProps {
   imageUrl: string;
 }
 
-export interface Item {
+interface Item {
   id: number;
   text: string;
 }

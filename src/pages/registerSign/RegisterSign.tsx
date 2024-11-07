@@ -6,10 +6,11 @@ import styled from '@emotion/styled';
 import Layout from '@/features/layout';
 import { Flex, Button } from '@/components/common';
 import { FetchRegisterSign } from '@/apis/registerSign/useRegisterSign';
+import { useTranslation } from 'react-i18next';
 
 export default function RegisterSign() {
   const signCanvas = useRef<ReactSignatureCanvas>(null);
-
+  const { t } = useTranslation();
   const clear = () => {
     signCanvas.current?.clear();
   };
@@ -55,8 +56,8 @@ export default function RegisterSign() {
           />
         </WrapperCanvas>
         <Flex justifyContent="center" gap={{ x: ' 20px' }}>
-          <CustomBtn onClick={clear}>초기화</CustomBtn>
-          <CustomBtn onClick={() => onSave()}>사인 등록하기</CustomBtn>
+          <CustomBtn onClick={clear}>{t('registerSign.reset')}</CustomBtn>
+          <CustomBtn onClick={() => onSave()}>{t('registerSign.registerSign')}</CustomBtn>
         </Flex>
       </Flex>
     </Layout>
