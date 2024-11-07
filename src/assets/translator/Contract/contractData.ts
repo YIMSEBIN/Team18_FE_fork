@@ -14,6 +14,7 @@ export const contractData = {
     SENTENCE2: "이 계약에서 정하지 않은 사항은 '근로기준법'에서 정하는 바에 따른다.",
     SIGN: '서명하기',
     SUBMIT: '제출하기',
+    ERROR: '* 근로계약서에 서명해주세요!',
   },
   [Languages.VE]: {
     CONTRACT: 'Hợp đồng lao động',
@@ -29,5 +30,6 @@ export const contractData = {
     SENTENCE2: 'Các điều khoản không được quy định trong hợp đồng này sẽ được điều chỉnh theo "Luật lao động".',
     SIGN: 'Ký tên',
     SUBMIT: 'Gửi đi',
+    ERROR: '* Vui lòng ký vào hợp đồng lao động!',
   },
 };
