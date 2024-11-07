@@ -30,8 +30,8 @@ const languageOptions = [
   },
   {
     value: 've',
-    text: '베트남어',
-    action: () => console.log('베트남어'),
+    text: 'Tiếng Việt',
+    action: () => console.log('Tiếng Việt'),
   },
 ];
 

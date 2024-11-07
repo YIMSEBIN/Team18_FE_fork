@@ -1,6 +1,7 @@
 import { Flex, Typo, Button } from '@/components/common';
 import Banner from './common/Banner';
 import { responsiveStyle } from '@utils/responsive';
+import { useTranslation } from 'react-i18next';
 
 const defaultImage = [
   { id: 1, imageUrl: 'https://www.v-on.kr/wp-content/uploads/2022/06/IT_twi001t2302755-1024x683.jpg' },
@@ -23,13 +24,15 @@ const headerStyle = responsiveStyle({
 });
 
 export default function Employer() {
+  const { t } = useTranslation();
+
   return (
     <Banner images={defaultImage}>
       <Flex direction="column" justifyContent="center" alignItems="center">
         <Typo element="h1" size="48px" color="white" bold style={headerStyle}>
-          {`사장님,\n 공고 등록은 하셨나요? 🤔`}
+          {t('home.greeting.heading')}
         </Typo>
-        <Button design="textbutton">등록하러 가기</Button>
+        <Button design="textbutton">{t('home.greeting.button')}</Button>
       </Flex>
     </Banner>
   );

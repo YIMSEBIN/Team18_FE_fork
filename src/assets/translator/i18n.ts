@@ -1,6 +1,7 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import { KO, VE } from '.';
+import { userLocalStorage } from '@/utils/storage';
 
 const resources = {
   ko: { translation: { ...KO } },
@@ -9,8 +10,8 @@ const resources = {
 
 i18n.use(initReactI18next).init({
   resources,
-  lng: 'ko',
-  fallbackLng: 've',
+  fallbackLng: 'ko',
+  lng: userLocalStorage.getLanguage() || 'ko',
   interpolation: {
     escapeValue: false,
   },
