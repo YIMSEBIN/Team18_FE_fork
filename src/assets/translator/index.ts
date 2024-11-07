@@ -10,6 +10,7 @@ import { myCompanyData } from './MyCompany/myCompanyData';
 import { recruitData } from './Recruit/recruitData';
 import { registerVisaData } from './RegisterVisa/registerVisaData';
 import { resumeData } from './Resume/resumeData';
+import { registerSignData } from './registerSign/registerSignData';
 
 export const KO = {
   resume: { ...resumeData[Languages.KO] },
@@ -23,6 +24,7 @@ export const KO = {
   recruit: { ...recruitData[Languages.KO] },
   applyGuide: { ...applyGuideData[Languages.KO] },
   apply: { ...applyData[Languages.KO] },
+  registerSign: { ...registerSignData[Languages.KO] },
 };
 
 export const VE = {
@@ -37,4 +39,5 @@ export const VE = {
   recruit: { ...recruitData[Languages.VE] },
   applyGuide: { ...applyGuideData[Languages.VE] },
   apply: { ...applyData[Languages.VE] },
+  registerSign: { ...registerSignData[Languages.VE] },
 };
