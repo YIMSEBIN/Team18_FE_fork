@@ -7,8 +7,10 @@ import EmployeeProfile from '../../../features/employee/myPage/EmployeeProfile';
 import { useGetMyApplication } from '@/apis/employee/hooks/useGetMyApplication';
 import { useNavigate } from 'react-router-dom';
 import ROUTE_PATH from '@/routes/path';
+import { useTranslation } from 'react-i18next';
 
 export default function EmployeeMyPage() {
+  const { t } = useTranslation();
   const { data: myRecruitList } = useGetMyApplication();
   const navigate = useNavigate();
 
@@ -24,7 +26,7 @@ export default function EmployeeMyPage() {
                 navigate(ROUTE_PATH.RESUME);
               }}
             >
-              <Typo bold>이력서 등록</Typo>
+              <Typo bold>{t('employeeMyPage.REGISTER_RESUME')}</Typo>
               <Icon.EmployeePage.Bag />
             </CardButton>
             <CardButton
@@ -33,7 +35,7 @@ export default function EmployeeMyPage() {
                 navigate(ROUTE_PATH.REGISTERSIGN);
               }}
             >
-              <Typo bold>사인 등록</Typo>
+              <Typo bold>{t('employeeMyPage.REGISTER_SIGN')}</Typo>
               <Icon.EmployeePage.Pen />
             </CardButton>
             <CardButton
@@ -42,14 +44,14 @@ export default function EmployeeMyPage() {
                 navigate(ROUTE_PATH.REGISTER_VISA);
               }}
             >
-              <Typo bold>외국인 번호 및 비자 발급 일자 등록</Typo>
+              <Typo bold>{t('employeeMyPage.REGISTER_VISA')}</Typo>
               <Icon.EmployeePage.Card />
             </CardButton>
           </ColumnSection>
         </Section>
         <Section>
           <Typo bold element="h3" size="20px" style={{ marginBottom: '24px' }}>
-            내가 지원한 공고
+            {t('employeeMyPage.MYRECRUITLIST')}
           </Typo>
           {myRecruitList && <MyRecruitList myRecruitList={myRecruitList} />}
         </Section>

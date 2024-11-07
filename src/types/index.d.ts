@@ -32,7 +32,7 @@ export const State = {
   LetsSign: '근로계약서 서명하기',
   Closed: '채용 마감',
   Waiting: '지원서 검토중',
-  Completed: '채용 완료',
+  Completed: '근로계약서 다운로드',
 } as const;
 
 export type StateProps = keyof typeof State;
@@ -57,4 +57,21 @@ export type RecruitmentItem = {
   workHours: string;
   area: string;
   hiring?: boolean;
+};
+
+export type NoticeRequestData = {
+  title?: string;
+  companyScale?: string;
+  area?: string;
+  salary?: string;
+  workDuration?: string;
+  workDays?: string;
+  workType?: string;
+  workHours?: string;
+  requestedCareer?: string;
+  majorBusiness?: string;
+  eligibilityCriteria?: string;
+  preferredConditions?: string;
+  employerName?: string;
+  companyName?: string;
 };

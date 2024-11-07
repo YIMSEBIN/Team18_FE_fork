@@ -1,4 +1,4 @@
-import { Card, Image, Typo, Button } from '@/components/common';
+import { Card, Image, Typo } from '@/components/common';
 import styled from '@emotion/styled';
 
 export default function EmployeeProfile({
@@ -39,11 +39,6 @@ export default function EmployeeProfile({
           </Typo>
         </TextSection>
       </ProfileSection>
-      <Button
-        style={{ width: '150px', height: '40px', backgroundColor: 'white', fontSize: '12px', padding: '10px 30px' }}
-      >
-        프로필 수정하기
-      </Button>
     </Card>
   );
 }

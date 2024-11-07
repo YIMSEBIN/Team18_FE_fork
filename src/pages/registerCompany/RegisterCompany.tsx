@@ -1,22 +1,25 @@
-import { useFetchPostCompany } from '@/apis/registerCompany/useRegisterCompany';
+import { usePostCompany } from '@/apis/registerCompany/hooks/useRegisterCompany';
 import { Button, Flex, Input, Typo } from '@/components/common';
 import Layout from '@/features/layout';
 import ROUTE_PATH from '@/routes/path';
 import styled from '@emotion/styled';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-export default function RegisterCompany() {
-  const mutation = useFetchPostCompany();
-  const navigate = useNavigate();
+const default_inputs = {
+  name: '',
+  industryOccupation: '',
+  brand: '',
+  revenuePerYear: 0,
+  logoImage: '',
+};
 
-  const [inputs, setInputs] = useState({
-    name: '',
-    industryOccupation: '',
-    brand: '',
-    revenuePerYear: 0,
-    logoImage: '',
-  });
+export default function RegisterCompany() {
+  const { t } = useTranslation();
+  const mutation = usePostCompany();
+  const navigate = useNavigate();
+  const [inputs, setInputs] = useState({ ...default_inputs });
 
   const { name, industryOccupation, brand, revenuePerYear, logoImage } = inputs;
 
@@ -46,12 +49,12 @@ export default function RegisterCompany() {
           <LineWrapper>
             <Flex direction="column" justifyContent="space-between" alignItems="center" style={{ width: '100%' }}>
               <Typo element="h1" size="24px" style={{ fontWeight: 'bold', marginBottom: '24px' }}>
-                회사 등록
+                {t('registerCompany.TITLE')}
               </Typo>
               <InputWrapper>
                 <InputContainer>
                   <Input
-                    label="회사 이미지 업로드(선택)"
+                    label={t('registerCompany.LOGOIMAGE')}
                     type="file"
                     value={logoImage}
                     onChange={onChange}
@@ -59,21 +62,41 @@ export default function RegisterCompany() {
                   ></Input>
                 </InputContainer>
                 <InputContainer>
-                  <Input label="회사명" value={name} onChange={onChange} style={InputStyle}></Input>
+                  <Input
+                    label={t('registerCompany.COMPANYNAME')}
+                    value={name}
+                    onChange={onChange}
+                    style={InputStyle}
+                  ></Input>
                 </InputContainer>
                 <InputContainer>
-                  <Input label="업직종" value={industryOccupation} onChange={onChange} style={InputStyle}></Input>
+                  <Input
+                    label={t('registerCompany.INDUSTRY_OCCUPATION')}
+                    value={industryOccupation}
+                    onChange={onChange}
+                    style={InputStyle}
+                  ></Input>
                 </InputContainer>
                 <InputContainer>
-                  <Input label="브랜드" value={brand} onChange={onChange} style={InputStyle}></Input>
+                  <Input
+                    label={t('registerCompany.BRAND')}
+                    value={brand}
+                    onChange={onChange}
+                    style={InputStyle}
+                  ></Input>
                 </InputContainer>
                 <InputContainer>
-                  <Input label="연 평균 매출액" value={revenuePerYear} onChange={onChange} style={InputStyle}></Input>
+                  <Input
+                    label={t('registerCompany.REVENUE_PERYEAR')}
+                    value={revenuePerYear}
+                    onChange={onChange}
+                    style={InputStyle}
+                  ></Input>
                 </InputContainer>
               </InputWrapper>
               <ButtonWrapper>
                 <Button design="default" onClick={handlePostCompany} style={{}}>
-                  등록하기
+                  {t('registerCompany.SUBMIT')}
                 </Button>
               </ButtonWrapper>
             </Flex>
