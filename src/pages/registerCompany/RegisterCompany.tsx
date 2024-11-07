@@ -37,7 +37,6 @@ export default function RegisterCompany() {
         navigate(ROUTE_PATH.HOME);
       },
       onError: () => {
-        // 이부분 에러처리 결정해야함.
         alert('값이 정상적으로 저장되지 않았습니다.');
       },
     });
@@ -55,6 +54,7 @@ export default function RegisterCompany() {
                 <InputContainer>
                   <Input
                     label={t('registerCompany.LOGOIMAGE')}
+                    name="logoImage"
                     type="file"
                     value={logoImage}
                     onChange={onChange}
@@ -64,6 +64,7 @@ export default function RegisterCompany() {
                 <InputContainer>
                   <Input
                     label={t('registerCompany.COMPANYNAME')}
+                    name="name"
                     value={name}
                     onChange={onChange}
                     style={InputStyle}
@@ -72,6 +73,7 @@ export default function RegisterCompany() {
                 <InputContainer>
                   <Input
                     label={t('registerCompany.INDUSTRY_OCCUPATION')}
+                    name="industryOccupation"
                     value={industryOccupation}
                     onChange={onChange}
                     style={InputStyle}
@@ -80,6 +82,7 @@ export default function RegisterCompany() {
                 <InputContainer>
                   <Input
                     label={t('registerCompany.BRAND')}
+                    name="brand"
                     value={brand}
                     onChange={onChange}
                     style={InputStyle}
@@ -88,6 +91,7 @@ export default function RegisterCompany() {
                 <InputContainer>
                   <Input
                     label={t('registerCompany.REVENUE_PERYEAR')}
+                    name="revenuePerYear"
                     value={revenuePerYear}
                     onChange={onChange}
                     style={InputStyle}
@@ -95,7 +99,7 @@ export default function RegisterCompany() {
                 </InputContainer>
               </InputWrapper>
               <ButtonWrapper>
-                <Button design="default" onClick={handlePostCompany} style={{}}>
+                <Button design="default" onClick={handlePostCompany}>
                   {t('registerCompany.SUBMIT')}
                 </Button>
               </ButtonWrapper>
