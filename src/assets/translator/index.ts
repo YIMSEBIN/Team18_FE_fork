@@ -5,6 +5,7 @@ import { footerData } from './Footer/footerData';
 import { headerData } from './Header/headerData';
 import { Languages } from './Languages';
 import { myCompanyData } from './MyCompany/myCompanyData';
+import { recruitData } from './Recruit/recruitData';
 import { registerVisaData } from './RegisterVisa/registerVisaData';
 import { resumeData } from './Resume/resumeData';
 
@@ -17,6 +18,7 @@ export const KO = {
   contractModal: { ...contractModalData[Languages.KO] },
   header: { ...headerData[Languages.KO] },
   footer: { ...footerData[Languages.KO] },
+  recruit: { ...recruitData[Languages.KO] },
 };
 
 export const VE = {
@@ -28,4 +30,5 @@ export const VE = {
   contractModal: { ...contractModalData[Languages.VE] },
   header: { ...headerData[Languages.VE] },
   footer: { ...footerData[Languages.VE] },
+  recruit: { ...recruitData[Languages.VE] },
 };

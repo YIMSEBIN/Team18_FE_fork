@@ -2,8 +2,10 @@ import { Button } from '@/components/common';
 import { Icon } from '@components/common';
 import styled from '@emotion/styled';
 import type { RecruitCardProps } from './RecruitType';
+import { useTranslation } from 'react-i18next';
 
 export default function RecruitCard({ koreanTitle, companyScale, area, requestedCareer, imageUrl }: RecruitCardProps) {
+  const { t } = useTranslation();
   return (
     <RecruitContainer>
       <CompanyImg alt="companyImg" src={imageUrl} />
@@ -13,7 +15,7 @@ export default function RecruitCard({ koreanTitle, companyScale, area, requested
           <p>{`${companyScale} | ${area} | ${requestedCareer}`}</p>
         </Info_p>
         <Info_Btn>
-          <CustomBtn background="#0a65cc">지원하기</CustomBtn>
+          <CustomBtn background="#0a65cc">{t('recruit.recruit')}</CustomBtn>
           <CustomBtn color="0a65cc" width="10px">
             <div>
               <Icon.Social.Instagram />
