@@ -7,14 +7,16 @@ import Layout from '@/features/layout';
 import { Flex, Button } from '@/components/common';
 import { FetchRegisterSign } from '@/apis/registerSign/useRegisterSign';
 import { useTranslation } from 'react-i18next';
+import { userLocalStorage } from '@/utils/storage';
 
 export default function RegisterSign() {
+  const userType = userLocalStorage.getUser()?.type || '';
   const signCanvas = useRef<ReactSignatureCanvas>(null);
   const { t } = useTranslation();
   const clear = () => {
     signCanvas.current?.clear();
   };
-  const mutation = FetchRegisterSign();
+  const mutation = FetchRegisterSign(userType);
 
   const convertDataUrlToFile = () => {
     const dataURL = signCanvas.current?.toDataURL('image/png');
