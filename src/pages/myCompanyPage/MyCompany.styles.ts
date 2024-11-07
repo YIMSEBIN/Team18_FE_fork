@@ -24,9 +24,6 @@ export const companyWrapperStyle = css`
       gap: '15px',
       width: '100%',
     },
-    mobile: {
-      flexDirection: 'column',
-    },
   })}
 `;
 

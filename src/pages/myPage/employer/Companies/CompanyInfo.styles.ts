@@ -32,14 +32,10 @@ export const infoStyle = css`
       gap: '30px',
     },
     tablet: {
-      flexDirection: 'row',
-      justifyContent: 'center',
-      width: '100%',
-      gap: '10px',
-    },
-    mobile: {
       flexDirection: 'column',
+      justifyContent: 'center',
       alignItems: 'center',
+      width: '100%',
       gap: '10px',
     },
   })}
