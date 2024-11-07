@@ -15,6 +15,7 @@ import { contractsMockHandler } from '@/apis/contract/mock/contract.mock';
 import { getProfileInfoHandler } from '@/apis/applicants/mocks/getApplicantProfile';
 import { closeRecruitmentMockHandler } from '@/apis/recruitments/mocks/closeRecruitmentMockHandler';
 import { requiredFieldCheckMockHandler } from '@/apis/recruitmentsDetail/mock/requiredFieldCheckHandler';
+import { postResumeMockHandler } from '@/apis/resume/postResume.mock';
 
 export const handlers = [
   ...recruitmentsMockHandler,
@@ -34,4 +35,5 @@ export const handlers = [
   ...getProfileInfoHandler,
   ...closeRecruitmentMockHandler,
   ...requiredFieldCheckMockHandler,
+  ...postResumeMockHandler,
 ];

@@ -15,6 +15,7 @@ export const APIPath = {
   registerVisa: `${BASE_URL}/visa`,
   registerCompany: `${BASE_URL}/company`,
   apply: `${BASE_URL}/application/:recruitmentId`,
+  resume: `${BASE_URL}/resumes`,
   recruitmentsDetail: '/api/recruitments/:recruitmentId',
   getApplicantProfile: '/api/resumes/:resumeId/:applyId',
   closeRecruitment: `${BASE_URL}/recruitment/hiringClose/:recruitmentId`,
