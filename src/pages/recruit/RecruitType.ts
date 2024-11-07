@@ -7,6 +7,8 @@ export interface RecruitCardProps {
   area: string;
   requestedCareer: string;
   imageUrl: string;
+  recruitmentId: string;
+  requiredFieldCheck?: RequiredFieldCheckProps;
 }
 
 interface Item {
@@ -35,4 +37,10 @@ export type RecruitProps = RecruitCardProps & RecruitDetailProps;
 export interface SectionProps {
   title: string;
   children: ReactNode;
+}
+
+export interface RequiredFieldCheckProps {
+  resumeExistence: boolean;
+  visaExistence: boolean;
+  foreignerIdNumberExistence: boolean;
 }

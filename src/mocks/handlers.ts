@@ -9,11 +9,12 @@ import { myApplicantsMockHandler } from '@/apis/applicants/mocks/myApplicantsMoc
 import { foreignerMockHandler } from '@/apis/applicants/mocks/foreignerMockHandler';
 import { visaMockHandler } from '@/apis/applicants/mocks/visaMockHandler';
 import { postApplyMockHandler } from '@apis/apply/postApply.mock';
-import { recruitmentsDetailMockHandler } from '@apis/recruitmentsDetail/recruitmentsDetailMockHandler';
+import { recruitmentsDetailMockHandler } from '@/apis/recruitmentsDetail/mock/recruitmentsDetailMockHandler';
 import { registerCompanyMockHandler } from '@/apis/registerCompany/registerCompany.mock';
 import { contractsMockHandler } from '@/apis/contract/mock/contract.mock';
 import { getProfileInfoHandler } from '@/apis/applicants/mocks/getApplicantProfile';
 import { closeRecruitmentMockHandler } from '@/apis/recruitments/mocks/closeRecruitmentMockHandler';
+import { requiredFieldCheckMockHandler } from '@/apis/recruitmentsDetail/mock/requiredFieldCheckHandler';
 
 export const handlers = [
   ...recruitmentsMockHandler,
@@ -32,4 +33,5 @@ export const handlers = [
   ...contractsMockHandler,
   ...getProfileInfoHandler,
   ...closeRecruitmentMockHandler,
+  ...requiredFieldCheckMockHandler,
 ];

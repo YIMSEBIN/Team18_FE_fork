@@ -18,6 +18,7 @@ export const APIPath = {
   recruitmentsDetail: '/api/recruitments/:recruitmentId',
   getApplicantProfile: '/api/resumes/:resumeId/:applyId',
   closeRecruitment: `${BASE_URL}/recruitment/hiringClose/:recruitmentId`,
+  requiredFieldCheck: `${BASE_URL}/api/application/`,
 };
 
 export const getDynamicAPIPath = {
