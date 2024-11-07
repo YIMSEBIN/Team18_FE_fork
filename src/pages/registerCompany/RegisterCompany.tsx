@@ -1,4 +1,4 @@
-import { useFetchPostCompany } from '@/apis/registerCompany/useRegisterCompany';
+import { usePostCompany } from '@/apis/registerCompany/hooks/useRegisterCompany';
 import { Button, Flex, Input, Typo } from '@/components/common';
 import Layout from '@/features/layout';
 import ROUTE_PATH from '@/routes/path';
@@ -6,17 +6,18 @@ import styled from '@emotion/styled';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export default function RegisterCompany() {
-  const mutation = useFetchPostCompany();
-  const navigate = useNavigate();
+const default_inputs = {
+  name: '',
+  industryOccupation: '',
+  brand: '',
+  revenuePerYear: 0,
+  logoImage: '',
+};
 
-  const [inputs, setInputs] = useState({
-    name: '',
-    industryOccupation: '',
-    brand: '',
-    revenuePerYear: 0,
-    logoImage: '',
-  });
+export default function RegisterCompany() {
+  const mutation = usePostCompany();
+  const navigate = useNavigate();
+  const [inputs, setInputs] = useState({ ...default_inputs });
 
   const { name, industryOccupation, brand, revenuePerYear, logoImage } = inputs;
 

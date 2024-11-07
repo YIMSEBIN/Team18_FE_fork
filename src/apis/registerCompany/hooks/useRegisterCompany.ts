@@ -17,7 +17,7 @@ export const postCompany = async (req: CompanyRequestData) => {
   return response.data;
 };
 
-export const useFetchPostCompany = () =>
+export const usePostCompany = () =>
   useMutation({
     mutationFn: postCompany,
   });

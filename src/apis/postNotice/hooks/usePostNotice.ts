@@ -2,7 +2,7 @@ import { APIPath } from '@/apis/apiPath';
 import { clientInstance } from '@/apis/instance';
 import { useMutation } from '@tanstack/react-query';
 
-export type NoticeRequestData = {
+type NoticeRequestData = {
   title?: string;
   companyScale?: string;
   area?: string;
@@ -26,7 +26,7 @@ export const postNotice = async (req: NoticeRequestData) => {
   return response.data;
 };
 
-export const useFetchPostNotice = () =>
+export const usePostNotice = () =>
   useMutation({
     mutationFn: postNotice,
   });
