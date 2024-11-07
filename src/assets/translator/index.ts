@@ -1,5 +1,6 @@
 import { applicantsData } from './Applicants/applicantsData';
 import { contractModalData } from './Applicants/ContractModal/contractModalData';
+import { applyGuideData } from './Apply/applyGuideData';
 import { employerMyPageData } from './EmployerMyPage/employerMyPageData';
 import { footerData } from './Footer/footerData';
 import { headerData } from './Header/headerData';
@@ -19,6 +20,7 @@ export const KO = {
   header: { ...headerData[Languages.KO] },
   footer: { ...footerData[Languages.KO] },
   recruit: { ...recruitData[Languages.KO] },
+  applyGuide: { ...applyGuideData[Languages.KO] },
 };
 
 export const VE = {
@@ -31,4 +33,5 @@ export const VE = {
   header: { ...headerData[Languages.VE] },
   footer: { ...footerData[Languages.VE] },
   recruit: { ...recruitData[Languages.VE] },
+  applyGuide: { ...applyGuideData[Languages.VE] },
 };
