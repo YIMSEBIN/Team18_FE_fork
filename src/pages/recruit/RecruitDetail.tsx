@@ -69,19 +69,19 @@ export default function RecruitDetail({
         </Flex>
       </SectionWithTitle>
       <SectionWithTitle title={t('recruit.eligibilityRequirements')}>
-        {eligibilityCriteria.map((data) => {
+        {eligibilityCriteria?.map((data) => {
           return <li key={data.id}>{data.text}</li>;
         })}
       </SectionWithTitle>
       <SectionWithTitle title={t('recruit.detailedDescription')}>{detailedDescription}</SectionWithTitle>
       <SectionWithTitle title={t('recruit.mainResponsibilities')}>
-        {majorBusiness.map((data) => {
+        {majorBusiness?.map((data) => {
           return <li key={data.id}>{data.text}</li>;
         })}
       </SectionWithTitle>
 
       <SectionWithTitle title={t('recruit.PreferredRequirements')}>
-        {preferredConditions.map((data) => {
+        {preferredConditions?.map((data) => {
           return <li key={data.id}>{data.text}</li>;
         })}
       </SectionWithTitle>
