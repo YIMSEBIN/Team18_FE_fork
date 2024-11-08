@@ -1,4 +1,4 @@
-import { usePostCompany } from '@/apis/registerCompany/hooks/useRegisterCompany';
+import { CompanyRequestData, usePostCompany } from '@/apis/registerCompany/hooks/useRegisterCompany';
 import { Button, Flex, Input, Typo } from '@/components/common';
 import Layout from '@/features/layout';
 import ROUTE_PATH from '@/routes/path';
@@ -12,16 +12,17 @@ const default_inputs = {
   industryOccupation: '',
   brand: '',
   revenuePerYear: 0,
-  logoImage: '',
+  logoImage: undefined as File | undefined,
 };
 
 export default function RegisterCompany() {
   const { t } = useTranslation();
   const mutation = usePostCompany();
   const navigate = useNavigate();
-  const [inputs, setInputs] = useState({ ...default_inputs });
+  const [inputs, setInputs] = useState<CompanyRequestData>({ ...default_inputs });
+  const [file, setFile] = useState<File | null>(null);
 
-  const { name, industryOccupation, brand, revenuePerYear, logoImage } = inputs;
+  const { name, industryOccupation, brand, revenuePerYear } = inputs;
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target;
@@ -31,8 +32,29 @@ export default function RegisterCompany() {
     });
   };
 
+  const onFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newfile = e.target.files?.[0];
+    if (newfile) {
+      setFile(newfile);
+    }
+  };
+
   const handlePostCompany = () => {
-    mutation.mutate(inputs, {
+    const formData = new FormData();
+
+    const companyRequest = {
+      name: inputs.name,
+      industryOccupation: inputs.industryOccupation,
+      brand: inputs.brand,
+      revenuePerYear: inputs.revenuePerYear,
+    };
+
+    formData.append('companyRequest', JSON.stringify(companyRequest));
+
+    if (file) {
+      formData.append('logoImage', file);
+    }
+    mutation.mutate(formData, {
       onSuccess: () => {
         navigate(ROUTE_PATH.HOME);
       },
@@ -41,6 +63,7 @@ export default function RegisterCompany() {
       },
     });
   };
+
   return (
     <Layout>
       <section>
@@ -56,8 +79,7 @@ export default function RegisterCompany() {
                     label={t('registerCompany.LOGOIMAGE')}
                     name="logoImage"
                     type="file"
-                    value={logoImage}
-                    onChange={onChange}
+                    onChange={onFileChange}
                     // style={{ width: '570px', height: '48px' }}
                   ></Input>
                 </InputContainer>
