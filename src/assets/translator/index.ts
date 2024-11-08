@@ -1,10 +1,14 @@
 import { applicantsData } from './Applicants/applicantsData';
 import { contractModalData } from './Applicants/ContractModal/contractModalData';
+import { signInData } from './Auth/signInData';
+import { signUpData } from './Auth/signUpData';
+import { signUpModalData } from './Auth/signUpModalData';
 import { applyGuideData } from './Apply/applyGuideData';
 import { applyData } from './Apply/applyData';
 import { employerMyPageData } from './EmployerMyPage/employerMyPageData';
 import { footerData } from './Footer/footerData';
 import { headerData } from './Header/headerData';
+import { homeData } from './Home/homeData';
 import { Languages } from './Languages';
 import { myCompanyData } from './MyCompany/myCompanyData';
 import { recruitData } from './Recruit/recruitData';
@@ -17,6 +21,10 @@ import { postNoticeData } from './PostNotice/postNoticeData';
 import { registerCompanyData } from './RegisterCompany/registerCompanyData';
 
 export const KO = {
+  home: { ...homeData[Languages.KO] },
+  signIn: { ...signInData[Languages.KO] },
+  signUp: { ...signUpData[Languages.KO] },
+  signUpModal: { ...signUpModalData[Languages.KO] },
   resume: { ...resumeData[Languages.KO] },
   employerMyPage: { ...employerMyPageData[Languages.KO] },
   myCompany: { ...myCompanyData[Languages.KO] },
@@ -36,6 +44,10 @@ export const KO = {
 };
 
 export const VE = {
+  home: { ...homeData[Languages.VE] },
+  signIn: { ...signInData[Languages.VE] },
+  signUp: { ...signUpData[Languages.VE] },
+  signUpModal: { ...signUpModalData[Languages.VE] },
   resume: { ...resumeData[Languages.VE] },
   employerMyPage: { ...employerMyPageData[Languages.VE] },
   myCompany: { ...myCompanyData[Languages.VE] },
