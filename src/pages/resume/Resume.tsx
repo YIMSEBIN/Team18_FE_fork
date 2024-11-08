@@ -6,7 +6,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { type ResumeInfo } from './ResumeType';
 import useToggle from '@/hooks/useToggle';
 import { useState } from 'react';
-
+import { FetchResume } from '@/apis/resume/useResumeHook';
 import { useTranslation } from 'react-i18next';
 
 export default function Resume() {
@@ -19,7 +19,7 @@ export default function Resume() {
   } = useForm<ResumeInfo>();
   const [isToggle, toggle] = useToggle();
   const [formData, setFormData] = useState<ResumeInfo | null>(null);
-
+  const mutation = FetchResume();
   const onSubmit: SubmitHandler<ResumeInfo> = (data) => {
     setFormData(data);
     toggle();
@@ -27,8 +27,9 @@ export default function Resume() {
 
   const handleResumeSubmit = () => {
     if (formData) {
-      console.log(formData);
-      alert('제출 완료!');
+      const data = JSON.stringify(formData);
+      mutation.mutate({ data });
+
       toggle();
     }
   };

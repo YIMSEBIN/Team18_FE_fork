@@ -2,7 +2,7 @@ import { Languages } from '../Languages';
 
 export const employerMyPageData = {
   [Languages.KO]: {
-    greeting: '사장님, 안녕하세요!',
+    greeting: '{{name}}님, 안녕하세요!',
     register_company: '회사 등록',
     register_sign: '사인 등록',
     my_companies: '내 회사',
@@ -10,7 +10,7 @@ export const employerMyPageData = {
     company_info: '회사 정보',
   },
   [Languages.VE]: {
-    greeting: 'Chủ doanh nghiệp, xin chào!',
+    greeting: '{{name}}, xin chào!',
     register_company: 'Đăng ký công ty',
     register_sign: 'Đăng ký chữ ký',
     my_companies: 'Công ty của tôi',
