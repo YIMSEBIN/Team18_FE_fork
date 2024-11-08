@@ -8,7 +8,9 @@ import { APIPath } from '@/apis/apiPath';
 const postOAuth = async ({ code }: OAuthRequest): Promise<OAuthResponse> => {
   const res = await clientInstance.post(APIPath.postOAuth, { code });
 
-  const accessToken = res.headers['authorization'];
+  const authorizationHeader = res.headers['authorization'];
+  const accessToken = authorizationHeader.replace('Bearer ', '');
+
   if (!accessToken) {
     throw new Error('Authorization header is missing in the response');
   }

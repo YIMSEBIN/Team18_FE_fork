@@ -16,7 +16,7 @@ export const getRoleConfig = (t: TFunction) => ({
     ),
     text: t('signUp.buttons.employer'),
     modalContent: <>{t('signUpModal.detailMessage.employer')}</>,
-    toNavigate: ROUTE_PATH.HOME,
+    toNavigate: ROUTE_PATH.REGISTERCOMPANY,
   },
   employee: {
     icon: (
@@ -30,6 +30,6 @@ export const getRoleConfig = (t: TFunction) => ({
     ),
     text: t('signUp.buttons.employee'),
     modalContent: <>{t('signUpModal.detailMessage.employee')}</>,
-    toNavigate: ROUTE_PATH.HOME,
+    toNavigate: ROUTE_PATH.RESUME,
   },
 });

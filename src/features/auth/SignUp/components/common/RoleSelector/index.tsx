@@ -4,7 +4,7 @@ import { bounceAnimation } from '@assets/styles/animations';
 import { responsiveStyle } from '@utils/responsive';
 import useModals from '@components/common/Modal/hooks/useModals';
 import { modals } from '@/components/common/Modal/Modals';
-import { useRegister } from '@/apis/auth/mutations/useRegister';
+import { useRegisterMutation } from '@/apis/auth/hooks/mutations/useRegisterMutation';
 import { useNavigate } from 'react-router-dom';
 import ROUTE_PATH from '@/routes/path';
 import { useTranslation } from 'react-i18next';
@@ -29,7 +29,7 @@ export default function RoleSelector({ role }: Props) {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { openModal } = useModals();
-  const { mutate } = useRegister();
+  const { mutate } = useRegisterMutation();
   const roleConfig = getRoleConfig(t);
 
   const handleRegister = () => {

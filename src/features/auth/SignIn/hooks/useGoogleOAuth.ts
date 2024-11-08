@@ -6,11 +6,12 @@ import { OAuthResponse } from '@/apis/auth/types/response';
 
 const googleClientId = import.meta.env.VITE_GOOGLE_AUTH_CLIENT_ID;
 const googleRedirectUri = import.meta.env.VITE_GOOGLE_AUTH_REDIRECT_URI;
-const googleAuthUri = `https://accounts.google.com/o/oauth2/v2/auth?scope=https%3A//www.googleapis.com/auth/drive.metadata.readonly&include_granted_scopes=true&response_type=token&state=state_parameter_passthrough_value&redirect_uri=${googleRedirectUri}&client_id=${googleClientId}`;
+
+const googleAuthUri = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${googleClientId}&redirect_uri=${googleRedirectUri}&response_type=code&scope=email%20profile`;
 
 const getAccessTokenFromUrl = () => {
-  const hashParams = new URLSearchParams(window.location.hash.substring(1));
-  return hashParams.get('access_token');
+  const searchParams = new URLSearchParams(window.location.search);
+  return searchParams.get('code');
 };
 
 export function useGoogleOAuth() {
@@ -24,6 +25,7 @@ export function useGoogleOAuth() {
 
   const handleLogin = useCallback(() => {
     const token = getAccessTokenFromUrl();
+
     if (token) {
       setIsLoading(true);
       mutate(
@@ -49,8 +51,6 @@ export function useGoogleOAuth() {
           },
         },
       );
-    } else {
-      console.log('로그인 재시도하세요.');
     }
   }, [mutate, navigate]);
 
