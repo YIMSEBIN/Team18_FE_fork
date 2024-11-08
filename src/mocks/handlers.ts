@@ -10,7 +10,7 @@ import { foreignerMockHandler } from '@/apis/applicants/mocks/foreignerMockHandl
 import { visaMockHandler } from '@/apis/applicants/mocks/visaMockHandler';
 import { postApplyMockHandler } from '@apis/apply/postApply.mock';
 import { recruitmentsDetailMockHandler } from '@/apis/recruitmentsDetail/mock/recruitmentsDetailMockHandler';
-import { registerCompanyMockHandler } from '@/apis/registerCompany/registerCompany.mock';
+import { registerCompanyMockHandler } from '@/apis/registerCompany/mocks/registerCompany.mock';
 import { contractsMockHandler } from '@/apis/contract/mock/contract.mock';
 import { getProfileInfoHandler } from '@/apis/applicants/mocks/getApplicantProfile';
 import { closeRecruitmentMockHandler } from '@/apis/recruitments/mocks/closeRecruitmentMockHandler';
