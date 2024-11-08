@@ -1,12 +1,13 @@
 import { AxiosError } from 'axios';
 import { useSuspenseQuery, UseSuspenseQueryResult } from '@tanstack/react-query';
 import { clientInstance } from '@apis/instance';
-import { HOME_PATH } from '../path';
-import { SlidesResponse } from '../types/response';
+
+import { SlidesResponse } from '../../types/response';
 import { QUERY_KEYS } from './queryKeys';
+import { APIPath } from '@/apis/apiPath';
 
 const getSlides = async (): Promise<SlidesResponse[]> => {
-  const res = await clientInstance.get<SlidesResponse[]>(HOME_PATH.SLIDER);
+  const res = await clientInstance.get<SlidesResponse[]>(APIPath.getSlides);
   return res.data;
 };
 
