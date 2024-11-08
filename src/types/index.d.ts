@@ -25,6 +25,7 @@ export type ForeignerData = {
 export type UserData = {
   type: 'first' | 'employee' | 'employer';
   profileImage: string;
+  name: string;
 };
 
 // 백엔드에서 정하는 값에 따라 key 바꾸면 됨

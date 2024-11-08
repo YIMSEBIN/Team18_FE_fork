@@ -13,9 +13,11 @@ import { useGetMyCompanies } from '@/apis/companies/hooks/useGetMyCompanies';
 import { useNavigate } from 'react-router-dom';
 import ROUTE_PATH from '@/routes/path';
 import { useTranslation } from 'react-i18next';
+import { userLocalStorage } from '@/utils/storage';
 
 export default function EmployerMyPage() {
   const { data: companyList, isLoading } = useGetMyCompanies();
+  const userName = userLocalStorage.getUser()?.name;
   const { t } = useTranslation();
   const navigate = useNavigate();
 
@@ -34,7 +36,7 @@ export default function EmployerMyPage() {
           <Flex direction="column" gap={{ y: '60px' }} css={{ position: 'relative', minHeight: '600px' }}>
             <Flex justifyContent="space-between" alignItems="center" css={flexStyle}>
               <Typo element="h2" size="36px" style={typoStyle} bold>
-                {t('employerMyPage.greeting')}
+                {t('employerMyPage.greeting', { name: userName })}
               </Typo>
               <Flex justifyContent="flex-end" alignItems="center" gap={{ x: '20px' }} css={buttonGroupStyle}>
                 <Button design="outlined" css={buttonStyle} onClick={goToRegisterCompanyPage}>
