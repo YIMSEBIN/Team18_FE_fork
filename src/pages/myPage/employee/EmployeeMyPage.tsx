@@ -15,13 +15,14 @@ export default function EmployeeMyPage() {
   const { data: myRecruitList } = useGetMyApplication();
   const navigate = useNavigate();
 
+  const name = userLocalStorage.getUser()?.name;
   const profileImage = userLocalStorage.getUser()?.profileImage;
 
   return (
     <Layout>
       <InnerContainer style={{ justifyContent: 'center', width: '70%', padding: '60px 0' }}>
         <Section>
-          <EmployeeProfile profileImage={profileImage} />
+          <EmployeeProfile name={name} profileImage={profileImage} />
           <ColumnSection>
             <CardButton
               design="outlined"
