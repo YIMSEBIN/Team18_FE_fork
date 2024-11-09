@@ -17,7 +17,7 @@ export default function EmployerContract() {
   const [showSignError, setShowSignError] = useState(false);
 
   const [inputs, setInputs] = useState({
-    salary: '',
+    salary: 0,
     workingHours: '',
     dayOff: '',
     annualPaidLeave: '',
