@@ -25,10 +25,10 @@ const Wrapper = styled.button<Props>(
       return {
         backgroundColor: '#fff',
         color: '#0A65CC',
-        border: '2px solid #0A65CC',
+        border: '3px solid #0a65cc',
 
         '&:hover': {
-          backgroundColor: '#0033cc',
+          backgroundColor: '#0a65cc',
           color: '#fff',
         },
       };

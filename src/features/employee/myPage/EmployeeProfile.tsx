@@ -1,19 +1,19 @@
 import { Card, Image, Typo } from '@/components/common';
+import { userLocalStorage } from '@/utils/storage';
 import styled from '@emotion/styled';
 
-export default function EmployeeProfile({
-  name = '홍길동',
-  profileImage = 'https://img.freepik.com/free-photo/user-profile-icon-front-side-with-white-background_187299-40010.jpg?t=st=1729752570~exp=1729756170~hmac=4313719023c412dd92883d97ce79956fadf541e11d8cc3a4ef05150f301f5e7f&w=740',
-}) {
+export default function EmployeeProfile() {
+  const name = userLocalStorage.getUser()?.name || '';
+  const profileImage = userLocalStorage.getUser()?.profileImage || '';
+
   return (
     <Card
       style={{
         width: '100%',
         height: '100px',
         border: 0,
-        borderRadius: '4px',
-        marginBottom: '24px',
-        padding: '10px 30px',
+        borderRadius: 0,
+        padding: '0 30px',
         backgroundColor: '#0A65CC',
         display: 'flex',
         justifyContent: 'space-between',
