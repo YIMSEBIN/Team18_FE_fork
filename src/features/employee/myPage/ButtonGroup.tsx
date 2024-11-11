@@ -3,13 +3,20 @@ import { useNavigate } from 'react-router-dom';
 import ROUTE_PATH from '@/routes/path';
 import { Button, Icon, Typo } from '@/components/common';
 import { useTranslation } from 'react-i18next';
-import { RequiredFieldCheckProps } from '@/pages/recruit/RecruitType';
+import { useGetRequiredFieldCheck } from '@/apis/recruitmentsDetail/useRequiredFieldCheck';
+import { type RequiredFieldCheckProps } from '@/pages/recruit/RecruitType';
 
-export default function ButtonGroup({ requiredFieldCheck }: { requiredFieldCheck: RequiredFieldCheckProps }) {
+export default function ButtonGroup() {
   const { t } = useTranslation();
   const navigate = useNavigate();
-
-  const { resumeExistence, visaExistence, foreignerIdNumberExistence } = requiredFieldCheck;
+  const { data: requiredFieldCheck } = useGetRequiredFieldCheck();
+  const { resumeExistence, visaExistence, foreignerIdNumberExistence, signExistence }: RequiredFieldCheckProps =
+    requiredFieldCheck || {
+      resumeExistence: false,
+      visaExistence: false,
+      foreignerIdNumberExistence: false,
+      signExistence: false,
+    };
 
   return (
     <ColumnSection>
@@ -30,8 +37,8 @@ export default function ButtonGroup({ requiredFieldCheck }: { requiredFieldCheck
           navigate(ROUTE_PATH.REGISTERSIGN);
         }}
       >
-        <Typo bold>{visaExistence ? t('employeeMyPage.UPDATE_SIGN') : t('employeeMyPage.REGISTER_SIGN')}</Typo>
-        {visaExistence ? <Icon.EmployeePage.Check /> : <Icon.EmployeePage.Pen />}
+        <Typo bold>{signExistence ? t('employeeMyPage.UPDATE_SIGN') : t('employeeMyPage.REGISTER_SIGN')}</Typo>
+        {signExistence ? <Icon.EmployeePage.Check /> : <Icon.EmployeePage.Pen />}
       </ActiveButton>
       <ActiveButton
         design="outlined"
@@ -40,9 +47,11 @@ export default function ButtonGroup({ requiredFieldCheck }: { requiredFieldCheck
         }}
       >
         <Typo bold>
-          {foreignerIdNumberExistence ? t('employeeMyPage.UPDATE_VISA') : t('employeeMyPage.REGISTER_VISA')}
+          {visaExistence && foreignerIdNumberExistence
+            ? t('employeeMyPage.UPDATE_VISA')
+            : t('employeeMyPage.REGISTER_VISA')}
         </Typo>
-        {foreignerIdNumberExistence ? <Icon.EmployeePage.Check /> : <Icon.EmployeePage.Card />}
+        {visaExistence && foreignerIdNumberExistence ? <Icon.EmployeePage.Check /> : <Icon.EmployeePage.Card />}
       </ActiveButton>
     </ColumnSection>
   );

@@ -1,13 +1,12 @@
 import styled from '@emotion/styled';
 import EmployeeProfile from './EmployeeProfile';
 import ButtonGroup from './ButtonGroup';
-import { RequiredFieldCheckProps } from '@/pages/recruit/RecruitType';
 
-export default function ProfileSection({ requiredFieldCheck }: { requiredFieldCheck: RequiredFieldCheckProps }) {
+export default function ProfileSection() {
   return (
     <Wrapper>
       <EmployeeProfile />
-      <ButtonGroup requiredFieldCheck={requiredFieldCheck} />
+      <ButtonGroup />
     </Wrapper>
   );
 }

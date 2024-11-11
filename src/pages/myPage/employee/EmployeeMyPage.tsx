@@ -6,23 +6,14 @@ import { useGetMyApplication } from '@/apis/employee/hooks/useGetMyApplication';
 import { useTranslation } from 'react-i18next';
 import ProfileSection from '@/features/employee/myPage/ProfileSection';
 import { css } from '@emotion/react';
-import { useGetRequiredFieldCheck } from '@/apis/recruitmentsDetail/useRequiredFieldCheck';
-import { type RequiredFieldCheckProps } from '@/pages/recruit/RecruitType';
-
 export default function EmployeeMyPage() {
   const { t } = useTranslation();
   const { data: myRecruitList, isLoading } = useGetMyApplication();
-  const { data: requiredFieldCheck } = useGetRequiredFieldCheck();
-  const requiredFieldCheckData: RequiredFieldCheckProps = requiredFieldCheck || {
-    resumeExistence: false,
-    visaExistence: false,
-    foreignerIdNumberExistence: false,
-  };
 
   return (
     <Layout>
       <InnerContainer style={{ justifyContent: 'center', width: '70%', padding: '60px 0' }}>
-        <ProfileSection requiredFieldCheck={requiredFieldCheckData} />
+        <ProfileSection />
         <Section>
           <Typo bold element="h3" size="20px" style={{ marginBottom: '24px' }}>
             {t('employeeMyPage.MYRECRUITLIST')}
