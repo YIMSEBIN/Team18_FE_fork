@@ -11,21 +11,15 @@ export interface RecruitCardProps {
   requiredFieldCheck?: RequiredFieldCheckProps;
 }
 
-interface Item {
-  id: number;
-  text: string;
-}
-
 export interface RecruitDetailProps {
   salary: string;
   workDuration: string;
   workDays: string;
   workType: string;
   workHours: string;
-  detailedDescription: string;
-  majorBusiness: Item[];
-  eligibilityCriteria: Item[];
-  preferredConditions: Item[];
+  majorBusiness: string;
+  eligibilityCriteria: string;
+  preferredConditions: string;
   employerName: string;
   companyName: string;
   koreanDetailedDescription: string;
