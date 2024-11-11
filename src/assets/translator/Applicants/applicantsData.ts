@@ -2,7 +2,6 @@ import { Languages } from '../Languages';
 
 export const applicantsData = {
   [Languages.KO]: {
-    salary: '시급',
     applicant_list: '지원자 목록',
     total_applicants: '총 {{count}}명',
     view_details: '자세히 보러가기',
@@ -17,7 +16,6 @@ export const applicantsData = {
     },
   },
   [Languages.VE]: {
-    salary: 'Lương theo giờ',
     applicant_list: 'Danh sách ứng viên',
     total_applicants: 'Tổng cộng {{count}} người',
     view_details: 'Xem chi tiết',

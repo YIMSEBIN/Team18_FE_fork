@@ -4,16 +4,7 @@ import Button from '@components/common/Button';
 import { Flex, Image } from '@/components/common';
 import useToggle from '@/hooks/useToggle';
 import LanguageFilter from './components/LanguageFilter';
-import {
-  commonButtonStyle,
-  customButtonStyle,
-  flexStyle,
-  HeaderContainer,
-  imageStyle,
-  LogoImg,
-  menuIconStyle,
-  Nav,
-} from './index.styles';
+import { customButtonStyle, flexStyle, HeaderContainer, imageStyle, LogoImg, menuIconStyle, Nav } from './index.styles';
 import { startTransition } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ROUTE_PATH from '@/routes/path';
@@ -44,10 +35,6 @@ export default function Header() {
     navigate(ROUTE_PATH.HOME);
   };
 
-  const goToPostNotice = () => {
-    navigate(ROUTE_PATH.POST_NOTICE);
-  };
-
   const goToMyPage = () => {
     if (user?.type === 'employer') {
       navigate(ROUTE_PATH.MY_PAGE.EMPLOYER);
@@ -71,11 +58,6 @@ export default function Header() {
             </Button>
           ) : (
             <>
-              {user.type === 'employer' && (
-                <Button design="outlined" style={commonButtonStyle} onClick={goToPostNotice}>
-                  {t('header.post_notice')}
-                </Button>
-              )}
               <Flex justifyContent="center" alignItems="center" onClick={goToMyPage}>
                 <Image url={user.profileImage} size={{ width: '40px', height: '40px' }} css={imageStyle} />
               </Flex>
