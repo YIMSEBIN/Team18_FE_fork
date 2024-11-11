@@ -9,14 +9,14 @@ const meta: Meta<RecruitCardProps> = {
   tags: ['autodocs'],
   argTypes: {
     koreanTitle: { control: 'text' },
-    companyScale: { control: 'text' },
+    companySize: { control: 'text' },
     area: { control: 'text' },
     requestedCareer: { control: 'text' },
     imageUrl: { control: 'text' },
   },
   args: {
     koreanTitle: '김밥천국 채용 (1년 계약직)',
-    companyScale: '대기업',
+    companySize: '대기업',
     area: '대구 달서구',
     requestedCareer: '경력 1~2년',
     imageUrl: cat,
