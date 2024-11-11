@@ -4,21 +4,27 @@ import { MyRecruitListProps, StateProps, TextProps } from '@/types';
 import { useNavigate } from 'react-router-dom';
 import ROUTE_PATH from '@/routes/path';
 import { useGetContractImg } from '@/apis/contract/hooks/useGetContractImg';
+import React from 'react';
 
 type DesignProps = {
   design: 'default' | 'outlined' | 'textbutton' | 'deactivate';
   text?: TextProps;
+  style?: React.CSSProperties;
 };
 
 function getStateStyle(state: StateProps): DesignProps {
   switch (state) {
-    case 'LetsSign':
+    case 'SIGNING_EMPLOYMENT_CONTRACT':
       return { design: 'default', text: '근로계약서 서명하기' };
-    case 'Closed':
+    case 'HIRING_CLOSED':
       return { design: 'deactivate', text: '채용 마감' };
-    case 'Waiting':
-      return { design: 'outlined', text: '지원서 검토중' };
-    case 'Completed':
+    case 'REVIEWING_APPLICATION':
+      return {
+        design: 'deactivate',
+        text: '지원서 검토중',
+        style: { backgroundColor: '#fff', border: '3px solid #9A9A9A' },
+      };
+    case 'HIRED':
       return { design: 'outlined', text: '근로계약서 다운로드' };
     default:
       return { design: 'deactivate' }; // 상태가 정의되지 않은 경우
@@ -79,11 +85,11 @@ export default function MyRecruitCard({ myRecruit }: Props) {
       </TextSection>
       <Button
         design={buttonStyle.design}
-        style={{ width: '200px', padding: '10px 20px' }}
+        style={{ width: '200px', padding: '10px 20px', ...buttonStyle.style }}
         onClick={() => {
-          if (state == 'LetsSign') {
+          if (state == 'SIGNING_EMPLOYMENT_CONTRACT') {
             navigate(ROUTE_PATH.CONTRACT.EMPLOYEE.replace(':applyId', applyId.toString()));
-          } else if (state == 'Completed') {
+          } else if (state == 'HIRED') {
             downloadContract();
           }
         }}
