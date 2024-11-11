@@ -1,6 +1,6 @@
 import { MyRecruitListProps } from '@/types';
 
-export const myRecruitList: MyRecruitListProps[] = [
+export const myApplicationList: MyRecruitListProps[] = [
   {
     id: 1,
     image:

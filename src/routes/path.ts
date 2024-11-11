@@ -26,7 +26,7 @@ const ROUTE_PATH = {
   PREV: -1,
   HOME: '/',
   RECRUIT: '/recruit/:recruitmentId',
-  POST_NOTICE: '/post-notice',
+  POST_NOTICE: '/post-notice/:companyId',
   APPLY,
   AUTH,
   APPLICANTS: '/applicants/:companyId/:recruitmentId',
@@ -35,7 +35,7 @@ const ROUTE_PATH = {
   MY_COMPANY: '/my-company/:companyId',
   REGISTER_VISA: '/register-visa',
   MY_PAGE,
-  REGISTERSIGN: '/registersign',
+  REGISTERSIGN: '/register-sign',
   REGISTERCOMPANY: '/register-company',
   CONTRACT,
 } as const;

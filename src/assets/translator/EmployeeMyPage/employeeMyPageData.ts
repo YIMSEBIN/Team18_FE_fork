@@ -2,17 +2,21 @@ import { Languages } from '../Languages';
 
 export const employeeMyPageData = {
   [Languages.KO]: {
-    REGISTER_RESUME: '이력서 등록하기',
+    REGISTER_RESUME: '이력서 등록',
     REGISTER_SIGN: '사인 등록',
-    REGISTER_VISA: '외국인 번호 및 비자 발급 일자 등록',
+    REGISTER_VISA: '외국인 번호 및 비자 등록',
+    UPDATE_RESUME: '이력서 수정',
+    UPDATE_SIGN: '사인 수정',
+    UPDATE_VISA: '외국인 번호 및 비자 수정',
     MYRECRUITLIST: '내가 지원한 공고',
-    GREETING: '구직자님 안녕하세요!',
   },
   [Languages.VE]: {
     REGISTER_RESUME: 'Đăng ký hồ sơ',
     REGISTER_SIGN: 'Đăng ký chữ ký',
-    REGISTER_VISA: 'Đăng ký số người nước ngoài và ngày cấp visa',
+    REGISTER_VISA: 'Đăng ký số người nước ngoài và visa',
+    UPDATE_RESUME: 'Cập nhật hồ sơ',
+    UPDATE_SIGN: 'Cập nhật chữ ký',
+    UPDATE_VISA: 'Cập nhật số người nước ngoài và visa',
     MYRECRUITLIST: 'Công việc tôi đã ứng tuyển',
-    GREETING: 'Xin chào người tìm việc!',
   },
 };

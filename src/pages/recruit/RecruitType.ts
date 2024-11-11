@@ -37,4 +37,5 @@ export interface RequiredFieldCheckProps {
   resumeExistence: boolean;
   visaExistence: boolean;
   foreignerIdNumberExistence: boolean;
+  signExistence?: boolean;
 }
