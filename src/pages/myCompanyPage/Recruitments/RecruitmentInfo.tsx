@@ -54,9 +54,7 @@ export default function RecruitmentInfo({
           </Flex>
           <Flex alignItems="center" gap={{ x: '12px' }}>
             <SalaryIcon />
-            <Typo color="gray">
-              {t('applicants.salary')} {salary}
-            </Typo>
+            <Typo color="gray">{salary}</Typo>
           </Flex>
         </Flex>
       </Flex>
