@@ -3,6 +3,7 @@ import { Languages } from '../Languages';
 export const postNoticeData = {
   [Languages.KO]: {
     TITLE: '구인 글 등록하기',
+    NOTICE_TITLE: '제목',
     COMPANY_NAME: '회사명',
     EMPLOYER_NAME: '담당자명',
     COMPANY_SCALE: '회사규모',
@@ -20,6 +21,7 @@ export const postNoticeData = {
   },
   [Languages.VE]: {
     TITLE: 'Đăng thông báo tuyển dụng',
+    NOTICE_TITLE: 'Tiêu đề',
     COMPANY_NAME: 'Tên công ty',
     EMPLOYER_NAME: 'Tên người phụ trách',
     COMPANY_SCALE: 'Quy mô công ty',

@@ -64,7 +64,7 @@ export type NoticeRequestData = {
   title?: string;
   companyScale?: string;
   area?: string;
-  salary?: string;
+  salary?: number;
   workDuration?: string;
   workDays?: string;
   workType?: string;
@@ -75,4 +75,5 @@ export type NoticeRequestData = {
   preferredConditions?: string;
   employerName?: string;
   companyName?: string;
+  companyId?: number;
 };
