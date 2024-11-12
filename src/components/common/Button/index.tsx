@@ -43,6 +43,7 @@ const Wrapper = styled.button<Props>(
 
     if (design === 'deactivate') {
       return {
+        cursor: 'default',
         color: '#9A9A9A',
         backgroundColor: '#D9D9D9',
       };
