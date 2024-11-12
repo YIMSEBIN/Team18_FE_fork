@@ -28,23 +28,14 @@ export type UserData = {
   name: string;
 };
 
-// 백엔드에서 정하는 값에 따라 key 바꾸면 됨
-export const State = {
-  SIGNING_EMPLOYMENT_CONTRACT: '근로계약서 서명하기',
-  HIRING_CLOSED: '채용 마감',
-  REVIEWING_APPLICATION: '지원서 검토중',
-  HIRED: '근로계약서 다운로드',
-} as const;
-
-export type StateProps = keyof typeof State;
-export type TextProps = (typeof State)[StateProps];
+export type StateProps = '근로계약서 서명하기' | '채용마감' | '지원서 검토중' | '채용완료';
 
 export type MyRecruitListProps = {
   id: number;
   title: string;
   area: string;
   image: string;
-  state: StateProps;
+  status: StateProps;
   applyId: number;
 };
 

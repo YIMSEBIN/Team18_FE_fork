@@ -1,6 +1,6 @@
 import { Card, Image, Typo, Button } from '@/components/common';
 import styled from '@emotion/styled';
-import { MyRecruitListProps, StateProps, TextProps } from '@/types';
+import { MyRecruitListProps, StateProps } from '@/types';
 import { useNavigate } from 'react-router-dom';
 import ROUTE_PATH from '@/routes/path';
 import { useGetContractImg } from '@/apis/contract/hooks/useGetContractImg';
@@ -8,23 +8,23 @@ import React from 'react';
 
 type DesignProps = {
   design: 'default' | 'outlined' | 'textbutton' | 'deactivate';
-  text?: TextProps;
+  text?: string;
   style?: React.CSSProperties;
 };
 
-function getStateStyle(state: StateProps): DesignProps {
-  switch (state) {
-    case 'SIGNING_EMPLOYMENT_CONTRACT':
+function getStateStyle(status: StateProps): DesignProps {
+  switch (status) {
+    case '근로계약서 서명하기':
       return { design: 'default', text: '근로계약서 서명하기' };
-    case 'HIRING_CLOSED':
+    case '채용마감':
       return { design: 'deactivate', text: '채용 마감' };
-    case 'REVIEWING_APPLICATION':
+    case '지원서 검토중':
       return {
         design: 'deactivate',
         text: '지원서 검토중',
         style: { backgroundColor: '#fff', border: '3px solid #9A9A9A' },
       };
-    case 'HIRED':
+    case '채용완료':
       return { design: 'outlined', text: '근로계약서 다운로드' };
     default:
       return { design: 'deactivate' }; // 상태가 정의되지 않은 경우
@@ -41,9 +41,10 @@ type DownloadContractProps = {
 };
 
 export default function MyRecruitCard({ myRecruit }: Props) {
-  const { image, title, area, state, applyId } = myRecruit;
-  const buttonStyle = getStateStyle(state);
+  const { image, title, area, status, applyId } = myRecruit;
+  const buttonStyle = getStateStyle(status);
   const navigate = useNavigate();
+
   // 근로계약서 이미지 다운로드
   const downloadContract = () => {
     const { data: imgURLs } = useGetContractImg(applyId);
@@ -87,9 +88,9 @@ export default function MyRecruitCard({ myRecruit }: Props) {
         design={buttonStyle.design}
         style={{ width: '200px', padding: '10px 20px', ...buttonStyle.style }}
         onClick={() => {
-          if (state == 'SIGNING_EMPLOYMENT_CONTRACT') {
+          if (status == '근로계약서 서명하기') {
             navigate(ROUTE_PATH.CONTRACT.EMPLOYEE.replace(':applyId', applyId.toString()));
-          } else if (state == 'HIRED') {
+          } else if (status == '채용완료') {
             downloadContract();
           }
         }}
