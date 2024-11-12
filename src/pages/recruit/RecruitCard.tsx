@@ -9,7 +9,7 @@ import { userLocalStorage } from '@/utils/storage';
 
 export default function RecruitCard({
   koreanTitle,
-  companySize,
+  companyScale,
   area,
   requestedCareer,
   imageUrl,
@@ -68,7 +68,7 @@ export default function RecruitCard({
       <Info_Div>
         <Info_p>
           <p>{koreanTitle}</p>
-          <p>{`${companySize} | ${area} | ${requestedCareer}`}</p>
+          <p>{`${companyScale} | ${area} | ${requestedCareer}`}</p>
         </Info_p>
         <Info_Btn>
           <CustomBtn
