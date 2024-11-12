@@ -50,14 +50,14 @@ export type MyRecruitListProps = {
 
 export type RecruitmentItem = {
   recruitmentId: number;
-  image: string;
+  imageUrl: string;
   koreanTitle: string;
   vietnameseTitle: string;
   companyName: string;
   salary: number;
   workHours: string;
   area: string;
-  hiring?: boolean;
+  hiring: boolean;
 };
 
 export type NoticeRequestData = {

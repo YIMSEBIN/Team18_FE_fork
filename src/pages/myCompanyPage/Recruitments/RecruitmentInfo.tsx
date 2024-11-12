@@ -21,7 +21,7 @@ type Props = Omit<RecruitmentItem, 'workHours' | 'hiring'>;
 
 export default function RecruitmentInfo({
   recruitmentId,
-  image,
+  imageUrl,
   companyName,
   koreanTitle,
   vietnameseTitle,
@@ -40,7 +40,7 @@ export default function RecruitmentInfo({
   return (
     <Flex justifyContent="space-between" alignItems="center" gap={{ y: '100px' }} css={recruitmentFlexStyle}>
       <ImageWrapper>
-        <Image url={image} size={imageSize} css={imageStyle} />
+        <Image url={imageUrl} size={imageSize} css={imageStyle} />
       </ImageWrapper>
       <Flex css={infoFlexStyle}>
         <Typo color="blue">{companyName}</Typo>
