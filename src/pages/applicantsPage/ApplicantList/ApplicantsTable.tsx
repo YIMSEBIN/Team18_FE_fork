@@ -57,7 +57,7 @@ export default function ApplicantsTable({ applicantList }: Props) {
               <tr key={applicant.applyId}>
                 <Td>{applicant.name}</Td>
                 <Td>{applicant.applicantNation}</Td>
-                <Td>{applicant.korean}</Td>
+                <Td>{applicant.koreanLanguageLevel}</Td>
                 <Td css={buttonsCellStyle}>
                   <Flex justifyContent="flex-end" alignItems="center" gap={{ x: '20px' }} css={buttonGroupStyle}>
                     <Button

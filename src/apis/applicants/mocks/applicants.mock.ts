@@ -19,7 +19,7 @@ export const applicantList = [
     resumeId: 1,
     applyId: 1,
     applicantNation: '베트남',
-    korean: '중급',
+    koreanLanguageLevel: '중급',
   },
   {
     userId: 2,
@@ -27,6 +27,6 @@ export const applicantList = [
     resumeId: 2,
     applyId: 2,
     applicantNation: '베트남',
-    korean: '고급',
+    koreanLanguageLevel: '고급',
   },
 ];

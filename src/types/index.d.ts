@@ -13,7 +13,7 @@ export type ApplicantData = {
   resumeId: number;
   applyId: number;
   applicantNation: string;
-  korean: string;
+  koreanLanguageLevel: string;
 };
 
 export type ForeignerData = {
