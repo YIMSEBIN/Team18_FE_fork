@@ -69,6 +69,8 @@ export const buttonStyle = css`
 `;
 
 export const activateButtonStyle = css`
+  ${buttonStyle};
+
   &:hover {
     * {
       color: #fff;

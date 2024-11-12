@@ -8,6 +8,7 @@ import {
   spinnerFlexStyle,
   typoStyle,
   buttonGroupStyle,
+  activateButtonStyle,
 } from './EmployerMyPage.styles';
 import { useGetMyCompanies } from '@/apis/companies/hooks/useGetMyCompanies';
 import { useNavigate } from 'react-router-dom';
@@ -45,7 +46,7 @@ export default function EmployerMyPage() {
                 {t('employerMyPage.greeting', { name: userName })}
               </Typo>
               <Flex justifyContent="flex-end" alignItems="center" gap={{ x: '20px' }} css={buttonGroupStyle}>
-                <Button design="outlined" css={buttonStyle} onClick={goToRegisterCompanyPage}>
+                <Button design="outlined" css={activateButtonStyle} onClick={goToRegisterCompanyPage}>
                   <Flex justifyContent="space-between">
                     <Typo size="20px" bold>
                       {t('employerMyPage.register_company')}
@@ -55,7 +56,7 @@ export default function EmployerMyPage() {
                 </Button>
                 <Button
                   design={signExistence ? 'deactivate' : 'outlined'}
-                  css={buttonStyle}
+                  css={signExistence ? buttonStyle : activateButtonStyle}
                   onClick={goToSignPage}
                   disabled={signExistence}
                 >
