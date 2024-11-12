@@ -72,7 +72,6 @@ export default function RegisterCompany() {
     if (!industryOccupation) newErrors.industryOccupation = '산업/직종을 입력해주세요.';
     if (!brand) newErrors.brand = '브랜드명을 입력해주세요.';
     if (!revenuePerYear) newErrors.revenuePerYear = '연 매출을 입력해주세요.';
-    if (!file) newErrors.logoImage = '로고 이미지를 업로드해주세요.';
 
     setErrors(newErrors);
 
@@ -91,7 +90,10 @@ export default function RegisterCompany() {
 
     if (file) {
       formData.append('logoImage', file);
+    } else {
+      formData.append('logoImage', '');
     }
+
     mutation.mutate(formData, {
       onSuccess: () => {
         navigate(ROUTE_PATH.HOME);
