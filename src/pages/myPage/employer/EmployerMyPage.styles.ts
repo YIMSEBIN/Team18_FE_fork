@@ -68,6 +68,14 @@ export const buttonStyle = css`
   border-radius: 8px;
 `;
 
+export const activateButtonStyle = css`
+  &:hover {
+    * {
+      color: #fff;
+    }
+  }
+`;
+
 export const spinnerFlexStyle = css`
   position: absolute;
   top: 0;

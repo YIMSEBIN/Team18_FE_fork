@@ -14,9 +14,15 @@ import { useNavigate } from 'react-router-dom';
 import ROUTE_PATH from '@/routes/path';
 import { useTranslation } from 'react-i18next';
 import { userLocalStorage } from '@/utils/storage';
+import { useGetRequiredFieldCheck } from '@/apis/recruitmentsDetail/useRequiredFieldCheck';
+import { RequiredFieldCheckProps } from '@/pages/recruit/RecruitType';
 
 export default function EmployerMyPage() {
   const { data: companyList, isLoading } = useGetMyCompanies();
+  const { data: requiredFieldCheck } = useGetRequiredFieldCheck();
+  const { signExistence }: Pick<RequiredFieldCheckProps, 'signExistence'> = requiredFieldCheck || {
+    signExistence: false,
+  };
   const userName = userLocalStorage.getUser()?.name;
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -47,12 +53,19 @@ export default function EmployerMyPage() {
                     <Icon.EmployeePage.Bag />
                   </Flex>
                 </Button>
-                <Button design="outlined" css={buttonStyle} onClick={goToSignPage}>
+                <Button
+                  design={signExistence ? 'deactivate' : 'outlined'}
+                  css={buttonStyle}
+                  onClick={goToSignPage}
+                  disabled={signExistence}
+                >
                   <Flex justifyContent="space-between">
                     <Typo size="20px" bold>
-                      {t('employerMyPage.register_sign')}
+                      {signExistence
+                        ? t('employerMyPage.complete_sign_registration')
+                        : t('employerMyPage.register_sign')}
                     </Typo>
-                    <Icon.EmployeePage.Pen />
+                    {signExistence ? <Icon.EmployeePage.Check /> : <Icon.EmployeePage.Pen />}
                   </Flex>
                 </Button>
               </Flex>
