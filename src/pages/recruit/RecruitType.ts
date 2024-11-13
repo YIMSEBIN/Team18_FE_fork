@@ -3,7 +3,7 @@ import { ReactNode } from 'react';
 export interface RecruitCardProps {
   koreanTitle: string;
   vietnameseTitle?: string;
-  companySize: string;
+  companyScale: string;
   area: string;
   requestedCareer: string;
   imageUrl: string;
