@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { useGetMyContract } from '@/apis/contract/hooks/useGetMyContract';
-import { useFetchPostContract } from '@/apis/contract/hooks/usePostContract';
 import { Button, Flex, Typo } from '@/components/common';
 import Layout from '@/features/layout';
 import ROUTE_PATH from '@/routes/path';
 import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
+import { usePostSignEmployeeContract } from '@/apis/contract/hooks/usePostEmployeeSign';
 
 export type ContractResponseData = {
   salary: string;
@@ -23,7 +23,7 @@ export default function EmployeeContract() {
   const { applyId } = useParams();
   const applicationId = Number(applyId);
   const { data: contract } = useGetMyContract(applicationId);
-  const mutation = useFetchPostContract();
+  const mutation = usePostSignEmployeeContract();
   const navigate = useNavigate();
   const contractData: ContractResponseData = contract || {};
 
