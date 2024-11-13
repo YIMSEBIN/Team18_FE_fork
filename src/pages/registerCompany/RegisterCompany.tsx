@@ -90,8 +90,6 @@ export default function RegisterCompany() {
 
     if (file) {
       formData.append('logoImage', file);
-    } else {
-      formData.append('logoImage', '');
     }
 
     mutation.mutate(formData, {
