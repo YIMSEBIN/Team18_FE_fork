@@ -3,8 +3,6 @@ import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi } 
 import Header from '..';
 import { fireEvent, screen } from '@testing-library/react';
 import { server } from '@/mocks/server';
-// import { QueryClientProvider } from "@tanstack/react-query";
-// import { queryClient } from "@/apis/instance";
 import { useNavigate } from 'react-router-dom';
 import ROUTE_PATH from '@/routes/path';
 import { userLocalStorage } from '@/utils/storage';
