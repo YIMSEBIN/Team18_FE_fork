@@ -1,5 +1,6 @@
 import { useFetchPostContract } from '@/apis/contract/hooks/usePostContract';
-import { Button, Input, Typo } from '@/components/common';
+import { Button, Input, Modal, Typo } from '@/components/common';
+import useToggle from '@/hooks/useToggle';
 import ROUTE_PATH from '@/routes/path';
 import styled from '@emotion/styled';
 import { useState } from 'react';
@@ -22,9 +23,9 @@ export default function ContractRegistrationForm() {
   const mutation = useFetchPostContract();
   const navigate = useNavigate();
 
+  const [isToggle, toggle] = useToggle();
   const [isSigned, setIsSigned] = useState(false);
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
-
   const [inputs, setInputs] = useState({ ...default_inputs });
 
   const { salary, workingHours, dayOff, annualPaidLeave, workingPlace, responsibilities, rule } = inputs;
@@ -50,7 +51,7 @@ export default function ContractRegistrationForm() {
     });
   };
 
-  const handlePostContract = () => {
+  const onClickSubmitButton = () => {
     const newErrors: { [key: string]: string } = {};
 
     if (!salary) newErrors.salary = t('contract.ERROR.SALARY');
@@ -65,7 +66,10 @@ export default function ContractRegistrationForm() {
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length > 0) return;
+    toggle();
+  };
 
+  const onPostContract = () => {
     const postData = { ...inputs, applyId: Number(`${applicationId}`) };
 
     mutation.mutate(postData, {
@@ -174,11 +178,18 @@ export default function ContractRegistrationForm() {
           <TypoWrapper isSigned={isSigned}>{t('contract.SIGN')}</TypoWrapper>
           {isSigned && <CheckIcon>✅</CheckIcon>}
         </SignButton>
-        <Button design="default" onClick={handlePostContract}>
+        <Button design="default" onClick={onClickSubmitButton}>
           {t('contract.SUBMIT')}
         </Button>
       </ButtonWrapper>
       {!isSigned && errors.sign && <ErrorText>{errors.sign}</ErrorText>}
+      {isToggle && (
+        <Modal
+          textChildren={<ModalContainer>{t('contract.SUBMIT_CHECK')}</ModalContainer>}
+          buttonChildren={<CustomBtn onClick={onPostContract}>{t('contract.SUBMIT')}</CustomBtn>}
+          onClose={toggle}
+        />
+      )}
     </>
   );
 }
@@ -234,3 +245,15 @@ const ErrorText = styled.span`
 `;
 
 const InputStyle = { width: '450px', height: '48px' };
+
+const CustomBtn = styled(Button)`
+  background: #0a65cc;
+  color: white;
+  border: 1px solid #e4e5e8;
+  align-self: center;
+`;
+
+const ModalContainer = styled.div`
+  font-size: 24px;
+  margin: 30px 30px;
+`;

@@ -13,6 +13,7 @@ export const contractData = {
     SENTENCE1: '사용자와 근로자는 각자가 근로계약, 취업규칙, 단체협약을 지키고 성실하게 이행하여야 한다.',
     SENTENCE2: "이 계약에서 정하지 않은 사항은 '근로기준법'에서 정하는 바에 따른다.",
     SIGN: '서명하기',
+    SUBMIT_CHECK: '정말 제출하시겠습니까?',
     SUBMIT: '제출하기',
     ERROR: {
       WORKING_PLACE: '근무장소를 작성해주세요.',
@@ -39,6 +40,7 @@ export const contractData = {
       'Người sử dụng lao động và người lao động cần tuân thủ hợp đồng lao động, quy tắc lao động và thỏa thuận tập thể một cách nghiêm túc.',
     SENTENCE2: 'Các điều khoản không được quy định trong hợp đồng này sẽ được điều chỉnh theo "Luật lao động".',
     SIGN: 'Ký tên',
+    SUBMIT_CHECK: 'Bạn có chắc chắn muốn nộp không?',
     SUBMIT: 'Gửi đi',
     ERROR: {
       WORKING_PLACE: 'Vui lòng điền nơi làm việc.',
