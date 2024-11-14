@@ -1,5 +1,6 @@
 import { CompanyRequestData, usePostCompany } from '@/apis/registerCompany/hooks/useRegisterCompany';
-import { Button, Flex, Input } from '@/components/common';
+import { Button, Flex, Input, Modal } from '@/components/common';
+import useToggle from '@/hooks/useToggle';
 import ROUTE_PATH from '@/routes/path';
 import styled from '@emotion/styled';
 import { useState } from 'react';
@@ -17,6 +18,7 @@ const default_inputs = {
 export default function CompanyRegistrationForm() {
   const { t } = useTranslation();
   const mutation = usePostCompany();
+  const [isToggle, toggle] = useToggle();
   const navigate = useNavigate();
   const [inputs, setInputs] = useState<CompanyRequestData>({ ...default_inputs });
   const [file, setFile] = useState<File | null>(null);
@@ -63,7 +65,7 @@ export default function CompanyRegistrationForm() {
     }
   };
 
-  const handlePostCompany = () => {
+  const onClickSubmitButton = () => {
     const newErrors: { [key: string]: string } = {};
 
     if (!name) newErrors.name = t('registerCompany.ERROR.COMPANYNAME');
@@ -74,7 +76,10 @@ export default function CompanyRegistrationForm() {
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length > 0) return;
+    toggle();
+  };
 
+  const onPostCompany = () => {
     const formData = new FormData();
 
     const companyRequest = {
@@ -182,10 +187,17 @@ export default function CompanyRegistrationForm() {
         </Flex>
       </InputWrapper>
       <ButtonWrapper>
-        <Button design="default" onClick={handlePostCompany}>
+        <Button design="default" onClick={onClickSubmitButton}>
           {t('registerCompany.SUBMIT')}
         </Button>
       </ButtonWrapper>
+      {isToggle && (
+        <Modal
+          textChildren={<ModalContainer>{t('registerCompany.SUBMIT_CHECK')}</ModalContainer>}
+          buttonChildren={<CustomBtn onClick={onPostCompany}>{t('registerCompany.SUBMIT')}</CustomBtn>}
+          onClose={toggle}
+        />
+      )}
     </>
   );
 }
@@ -220,4 +232,16 @@ const ErrorText = styled.span`
   color: red;
   font-size: 12px;
   margin-top: 5px;
+`;
+
+const CustomBtn = styled(Button)`
+  background: #0a65cc;
+  color: white;
+  border: 1px solid #e4e5e8;
+  align-self: center;
+`;
+
+const ModalContainer = styled.div`
+  font-size: 24px;
+  margin: 30px 30px;
 `;
