@@ -1,5 +1,6 @@
 import { usePostNotice } from '@/apis/postNotice/hooks/usePostNotice';
-import { Button, Input } from '@/components/common';
+import { Button, Input, Modal } from '@/components/common';
+import useToggle from '@/hooks/useToggle';
 import ROUTE_PATH from '@/routes/path';
 import { NoticeRequestData } from '@/types';
 import styled from '@emotion/styled';
@@ -33,6 +34,8 @@ export default function PostNoticeForm() {
 
   const [inputs, setInputs] = useState({ ...default_inputs });
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
+  const [isToggle, toggle] = useToggle();
+  inputs.companyId = Number(curCompanyId);
 
   const {
     title,
@@ -74,7 +77,7 @@ export default function PostNoticeForm() {
     });
   };
 
-  const handlePostNotice = () => {
+  const onClickSubmitButton = () => {
     const newErrors: { [key: string]: string } = {};
 
     if (!title) newErrors.title = t('postNotice.ERROR.NOTICE_TITLE');
@@ -94,9 +97,10 @@ export default function PostNoticeForm() {
 
     setErrors(newErrors);
     if (Object.keys(newErrors).length > 0) return;
+    toggle();
+  };
 
-    inputs.companyId = Number(curCompanyId);
-
+  const onPostNotice = () => {
     mutation.mutate(inputs, {
       onSuccess: () => {
         navigate(ROUTE_PATH.HOME);
@@ -264,9 +268,16 @@ export default function PostNoticeForm() {
         />
         {errors.preferredConditions && <ErrorText>{errors.preferredConditions}</ErrorText>}
       </InputContainer>
-      <Button onClick={handlePostNotice} design="default" style={{ marginTop: '52px' }}>
+      <Button onClick={onClickSubmitButton} design="default" style={{ marginTop: '52px' }}>
         {t('postNotice.SUBMIT')}
       </Button>
+      {isToggle && (
+        <Modal
+          textChildren={<ModalContainer>{t('postNotice.SUBMIT_CHECK')}</ModalContainer>}
+          buttonChildren={<CustomBtn onClick={onPostNotice}>{t('postNotice.SUBMIT')}</CustomBtn>}
+          onClose={toggle}
+        />
+      )}
     </>
   );
 }
@@ -287,4 +298,16 @@ const ErrorText = styled.span`
   color: red;
   font-size: 12px;
   margin-top: 5px;
+`;
+
+const CustomBtn = styled(Button)`
+  background: #0a65cc;
+  color: white;
+  border: 1px solid #e4e5e8;
+  align-self: center;
+`;
+
+const ModalContainer = styled.div`
+  font-size: 24px;
+  margin: 30px 30px;
 `;

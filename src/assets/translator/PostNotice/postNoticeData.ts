@@ -33,6 +33,7 @@ export const postNoticeData = {
       ELIGIBILITY_CRITERIA: '비자 자격 요건을 입력해주세요.',
       PREFERRED_CONDITIONS: '우대사항을 입력해주세요.',
     },
+    SUBMIT_CHECK: '구인글을 등록하시겠습니까?',
     SUBMIT: '등록하기',
   },
   [Languages.VE]: {
@@ -67,6 +68,7 @@ export const postNoticeData = {
       ELIGIBILITY_CRITERIA: 'Vui lòng nhập yêu cầu về điều kiện visa.',
       PREFERRED_CONDITIONS: 'Vui lòng nhập điều kiện ưu tiên.',
     },
+    SUBMIT_CHECK: 'Bạn có muốn đăng bài tuyển dụng không?',
     SUBMIT: 'Đăng ký',
   },
 };
